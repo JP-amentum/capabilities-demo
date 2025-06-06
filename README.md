@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 Your folder should contain:
 
-- `capability_cards.py` – the main Streamlit app  
+- `capabilities.py` – the main Streamlit app  
 - `Amentum Skills Framework - HoP Version.xlsx` – the capability data  
 - `requirements.txt` – the list of required Python packages
 
@@ -42,7 +42,7 @@ Your folder should contain:
 **Step 3:** Run the app
 
 ```
-streamlit run capability_cards.py
+streamlit run capabilities.py
 ```
 
 The app will open in your browser at:
