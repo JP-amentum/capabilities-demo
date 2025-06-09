@@ -1,6 +1,6 @@
-# 🔍 Amentum Capability Search Tool
+# 🔍 Amentum Capability Search Tool (Admin Enabled)
 
-A password-protected Streamlit app to search capabilities across all engineering domains at Amentum. Displays detailed descriptions, capability groupings, and SME contacts by division.
+A password-protected Streamlit app to search, explore, edit, and manage engineering capabilities across all domains at Amentum. Includes full admin upload, dashboard insights, and divisional SME tracking.
 
 ---
 
@@ -23,8 +23,6 @@ conda activate capability_env
 pip install -r requirements.txt
 ```
 
-*Make sure you're in the same directory as `requirements.txt`.*
-
 ---
 
 ## 3. 📁 File Structure
@@ -32,12 +30,13 @@ pip install -r requirements.txt
 Your folder should contain:
 
 - `capabilities.py` – the main Streamlit app  
-- `Amentum Skills Framework - HoP Version.xlsx` – the capability data  
-- `requirements.txt` – the list of required Python packages
+- `requirements.txt` – Python package list  
+- `capabilities.db` – created automatically after first upload  
+- (Optional) Excel upload: `Amentum Skills Framework - HoP Version.xlsx`
 
 ---
 
-## 4. 🔐 Launch the App (Password Protected)
+## 4. 🔐 Launch the App (Admin or Viewer Login)
 
 **Step 3:** Run the app
 
@@ -45,50 +44,57 @@ Your folder should contain:
 streamlit run capabilities.py
 ```
 
-The app will open in your browser at:
+Access in browser: [http://localhost:8501](http://localhost:8501)
 
-[http://localhost:8501](http://localhost:8501)
-
-
----
-
-## 5. 🔍 Using the App
-
-- Search by **Skill** or **Competency**
-- Results are grouped by **Domain** (e.g. Physics, HVAC, EC&I)
-- Each result shows:
-  - Description
-  - Capability Group
-  - Group Capability
-  - SME Contacts:
-    - Global
-    - Environment
-    - Energy
-    - D&AS
-    - TC&I
-    - APAC
+- Admin login allows upload and editing
+- Viewer login allows searching and browsing only
 
 ---
 
-## 6. 🧾 Updating the Framework File
+## 5. 👥 Roles & Features
 
-To update data:
+### Viewer Mode
+- 🔍 Search by Skill or Competency
+- 🗂️ Explore by Domain
+- 📊 Dashboard visualisations
+- 👤 SME contacts by division:
+  - Global
+  - Environment
+  - Energy
+  - D&AS
+  - TC&I
+  - APAC
 
-1. Open `Amentum Skills Framework - HoP Version.xlsx`
-2. Modify or add capabilities under the correct sheet (e.g. "Physics")
-3. Save the file
-4. Restart or refresh the app
+### Admin Mode
+- 📤 Upload a new Excel framework file (clears old data)
+- 🛠 Search and edit individual capability cards
+- 📝 Edit all card fields inline in the UI
+- ✅ Edits save directly to SQLite database
 
-The changes will be automatically reflected.
+---
+
+## 6. 🧾 Updating the Framework File (Admin Only)
+
+1. Login as admin
+2. Upload a new Excel file
+3. Data will be parsed, old data cleared, and saved to database
+
+No restart required – changes reflect instantly.
 
 ---
 
 ## 7. 🛠 Optional Commands
 
-To regenerate the `requirements.txt` file (if needed):
+To regenerate the `requirements.txt` file:
 
 ```
 pip freeze > requirements.txt
+```
+
+To delete the local database (e.g. reset):
+
+```
+rm capabilities.db
 ```
 
 ---
