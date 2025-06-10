@@ -64,7 +64,7 @@ st.sidebar.title("🧭 Navigation")
 if st.session_state.role == "admin":
     page = st.sidebar.radio("Select a page", ["Admin", "Search", "Explorer", "Dashboard"])
 else:
-    page = st.sidebar.radio("Select a page", ["Search", "Explorer", "Dashboard"])
+    page = st.sidebar.radio("Select a page", ["Search", "Explorer"])
 
 # --- Admin Page ---
 if page == "Admin":
