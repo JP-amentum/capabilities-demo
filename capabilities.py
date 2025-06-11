@@ -45,8 +45,7 @@ def init_db():
                 sme_energy TEXT,
                 sme_das TEXT,
                 sme_tci TEXT,
-                sme_apac TEXT,
-                key_words TEXT
+                sme_apac TEXT
             )
         """)
 init_db()
@@ -106,8 +105,7 @@ if page == "Admin":
             "sme_energy": raw_df.get("Unnamed: 17", ""),
             "sme_das": raw_df.get("Unnamed: 18", ""),
             "sme_tci": raw_df.get("Unnamed: 19", ""),
-            "sme_apac": raw_df.get("Unnamed: 20", ""),
-            "key_words": raw_df.get("Key Words", "")
+            "sme_apac": raw_df.get("Unnamed: 20", "")
         })
 
         insert_data(mapped_df)
@@ -161,8 +159,7 @@ elif page == "Search":
     if search:
         filtered = df[
             df["skill"].str.contains(search, case=False, na=False) |
-            df["competency"].str.contains(search, case=False, na=False) |
-            df["key_words"].str.contains(search, case=False, na=False)
+            df["competency"].str.contains(search, case=False, na=False)
         ]
 
         if filtered.empty:
