@@ -162,7 +162,7 @@ elif page == "Home":
     with col1:
         if st.button("🔍 Search"):
             navigate("Search")
-     with col2:
+    with col2:
         if st.button("📚 Explore"):
             navigate("Explore")
             
