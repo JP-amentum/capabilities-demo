@@ -162,6 +162,10 @@ elif page == "Search":
             df["competency"].str.contains(search, case=False, na=False)
         ]
 
+
+        st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
+
+        
         if filtered.empty:
             st.warning("No results found.")
         else:
