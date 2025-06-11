@@ -150,6 +150,12 @@ if page == "Admin":
                         """, (*new_data.values(), row["id"]))
                     st.success("Changes saved.")
 
+# --- Home Page ---
+elif page == "Home":
+    st.title("Welcome to CapabilityConnect!")
+    st.text("CapabilityConnect is the primary search and discovery tool for capabilities in Amentum E&E-I")
+    st.text("Please select one of the options below")
+
 # --- Search Page ---
 elif page == "Search":
     st.title("🔍 Capability Search")
