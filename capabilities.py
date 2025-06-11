@@ -155,6 +155,7 @@ elif page == "Home":
     st.title("Welcome to CapabilityConnect!")
     st.text("CapabilityConnect is the primary search and discovery tool for capabilities in Amentum E&E-I")
     st.text("Please select one of the options below")
+    st.radio("Select an option:", ["Home", "Search", "Explorer"])
 
 # --- Search Page ---
 elif page == "Search":
