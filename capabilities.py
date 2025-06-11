@@ -62,9 +62,9 @@ def insert_data(df):
 # --- Navigation ---
 st.sidebar.title("🧭 Navigation")
 if st.session_state.role == "admin":
-    page = st.sidebar.radio("Select a page", ["Admin", "Search", "Explorer", "Dashboard"])
+    page = st.sidebar.radio("Select a page", ["Home", "Admin", "Search", "Explorer", "Dashboard"])
 else:
-    page = st.sidebar.radio("Select a page", ["Search", "Explorer"])
+    page = st.sidebar.radio("Select a page", ["Home", "Search", "Explorer"])
 
 # --- Admin Page ---
 if page == "Admin":
