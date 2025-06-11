@@ -155,8 +155,17 @@ elif page == "Home":
     st.title("Welcome to CapabilityConnect!")
     st.text("CapabilityConnect is the primary search and discovery tool for capabilities in Amentum E&E-I")
     st.text("Please select one of the options below")
-    page = st.radio("Select an option:", ["Search", "Explorer"])
+    def navigate(page_name):
+        st.session_state.page = page_name
+    col1, col2 = st.columns(2)
 
+    with col1:
+        if st.button("🔍 Search"):
+            navigate("Search")
+     with col2:
+        if st.button("📚 Explore"):
+            navigate("Explore")
+            
 # --- Search Page ---
 elif page == "Search":
     st.title("🔍 Capability Search")
