@@ -111,7 +111,7 @@ if st.session_state.page == "Admin":
         raw_df.columns = [c.strip() for c in raw_df.columns]
 
         mapped_df = pd.DataFrame({
-            "discipline": raw_df["Discipline"],
+            "discipline": raw_df["Domain"],
             "competency": raw_df.get("Competency", ""),
             "skill": raw_df.get("Skill", ""),
             "description": raw_df.get("Description", ""),
