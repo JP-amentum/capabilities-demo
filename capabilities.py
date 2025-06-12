@@ -236,9 +236,9 @@ elif page == "US Reachback":
     us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
 
     if us_capabilities is not None:
-        df = pd.read_excel(us_capabilities)
-        st.write("### Preview of Excel Data")
-        st.dataframe(df)
+        df = pd.read_excel(us_capabilities)
+        st.write("### Preview of Excel Data")
+        st.dataframe(df)
 
 
 
