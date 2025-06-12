@@ -48,7 +48,8 @@ def init_db():
                 sme_energy TEXT,
                 sme_das TEXT,
                 sme_tci TEXT,
-                sme_apac TEXT
+                sme_apac TEXT,
+                key_words TEXT
             )
         """)
 init_db()
