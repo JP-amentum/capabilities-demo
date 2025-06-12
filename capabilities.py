@@ -120,10 +120,10 @@ if st.session_state.page == "Admin":
             "group_capability": raw_df.get("Unnamed: 8", ""),
             "global_sme": raw_df.get("Head of Profession", ""),
             "sme_env": raw_df.get("Environment", ""),
-            "sme_energy": raw_df.get("Unnamed: 15", ""),
-            "sme_das": raw_df.get("Unnamed: 16", ""),
-            "sme_tci": raw_df.get("Unnamed: 17", ""),
-            "sme_apac": raw_df.get("Unnamed: 18", ""),
+            "sme_energy": raw_df.get("Energy", ""),
+            "sme_das": raw_df.get("D&AS", ""),
+            "sme_tci": raw_df.get("TC&I", ""),
+            "sme_apac": raw_df.get("APAC", ""),
             "key_words": raw_df.get("Keywords", "")
         })
 
