@@ -37,7 +37,7 @@ def init_db():
         conn.execute("""
             CREATE TABLE IF NOT EXISTS capabilities (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                domain TEXT,
+                discipline TEXT,
                 competency TEXT,
                 skill TEXT,
                 description TEXT,
@@ -102,7 +102,7 @@ if st.session_state.page == "Admin":
             try:
                 df = xls.parse(sheet, skiprows=2)
                 df.columns = [str(c).strip().replace('\xa0', ' ') for c in df.columns]
-                df["Domain"] = sheet
+                df["Discipline"] = sheet
                 all_data.append(df)
             except Exception:
                 continue
@@ -111,7 +111,7 @@ if st.session_state.page == "Admin":
         raw_df.columns = [c.strip() for c in raw_df.columns]
 
         mapped_df = pd.DataFrame({
-            "domain": raw_df["Domain"],
+            "discipline": raw_df["Discipline"],
             "competency": raw_df.get("Competency", ""),
             "skill": raw_df.get("Skill", ""),
             "description": raw_df.get("Description", ""),
@@ -139,10 +139,10 @@ if st.session_state.page == "Admin":
         ]
 
     for i, row in db_df.iterrows():
-        with st.expander(f"🧠 {row['skill']} — {row['domain']}"):
+        with st.expander(f"🧠 {row['skill']} — {row['discipline']}"):
             with st.form(f"edit_form_{row['id']}"):
                 new_data = {
-                    "domain": st.text_input("Domain", row["domain"], key=f"domain_{i}"),
+                    "discipline": st.text_input("Discipline", row["discipine"], key=f"discipline_{i}"),
                     "competency": st.text_input("Competency", row["competency"], key=f"competency_{i}"),
                     "skill": st.text_input("Skill", row["skill"], key=f"skill_{i}"),
                     "description": st.text_area("Description", row["description"], key=f"description_{i}"),
@@ -160,7 +160,7 @@ if st.session_state.page == "Admin":
                     with sqlite3.connect(DB_FILE) as conn:
                         conn.execute("""
                             UPDATE capabilities SET
-                                domain = ?, competency = ?, skill = ?, description = ?,
+                                discipline = ?, competency = ?, skill = ?, description = ?,
                                 cap_group = ?, group_capability = ?, global_sme = ?,
                                 sme_env = ?, sme_energy = ?, sme_das = ?, sme_tci = ?, sme_apac = ?
                             WHERE id = ?
@@ -203,9 +203,9 @@ elif st.session_state.page == "Search":
         if filtered.empty:
             st.warning("No results found.")
         else:
-            grouped = filtered.groupby("domain")
-            for domain, group in grouped:
-                st.markdown(f"## 🏷️ {domain}")
+            grouped = filtered.groupby("discipline")
+            for discipline, group in grouped:
+                st.markdown(f"## 🏷️ {discipline}")
                 for _, row in group.iterrows():
                     st.markdown(f"### 🧠 {row['skill']}")
                     st.markdown(f"- **Competency:** {row['competency']}")
@@ -229,8 +229,8 @@ elif st.session_state.page == "Explorer":
         st.warning("No data found. Admins must upload a capability file.")
         st.stop()
 
-    domain = st.selectbox("Select a domain", sorted(df["domain"].dropna().unique()))
-    filtered = df[df["domain"] == domain]
+    discipline = st.selectbox("Select a discipline", sorted(df["discipline"].dropna().unique()))
+    filtered = df[df["discipline"] == discipline]
 
     for _, row in filtered.iterrows():
         st.markdown(f"### 🧠 {row['skill']}")
@@ -278,11 +278,11 @@ elif st.session_state.page == "Dashboard":
         chart = alt.Chart(sme_summary).mark_bar().encode(x="Status", y="Count", color="Status")
         st.altair_chart(chart, use_container_width=True)
 
-    st.subheader("Skills per Domain")
-    domain_counts = df["domain"].value_counts().reset_index()
-    domain_counts.columns = ["Domain", "Skill Count"]
-    if not domain_counts.empty:
-        st.bar_chart(domain_counts.set_index("Domain"))
+    st.subheader("Skills per Discipline")
+    discipline_counts = df["discipline"].value_counts().reset_index()
+    discipline_counts.columns = ["Discipline", "Skill Count"]
+    if not discipline_counts.empty:
+        st.bar_chart(discipline_counts.set_index("Discipline"))
 
     st.subheader("Top Capability Groups")
     top_groups = df["cap_group"].value_counts().dropna().head(10).reset_index()
@@ -290,9 +290,9 @@ elif st.session_state.page == "Dashboard":
     st.dataframe(top_groups)
 
     st.subheader("Capabilities Missing SME")
-    required_cols = {"domain", "competency", "skill", "global_sme"}
+    required_cols = {"discipline", "competency", "skill", "global_sme"}
     if required_cols.issubset(df.columns):
-        st.dataframe(df[~df["has_sme"]][["domain", "competency", "skill", "global_sme"]])
+        st.dataframe(df[~df["has_sme"]][["discipline", "competency", "skill", "global_sme"]])
     else:
         st.warning("Expected columns not found in the data.")
 
