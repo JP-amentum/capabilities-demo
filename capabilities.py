@@ -238,7 +238,7 @@ elif st.session_state.page == "Explorer":
         st.stop()
 
     domain = st.selectbox("Select a discipline", sorted(df["domain"].dropna().unique()))
-    filtered = df[df["domain"] == domain]
+    filtered = df[df["domain"].str.strip().str.lower() == domain.strip().lower()]
 
     st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
 
