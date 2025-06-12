@@ -79,11 +79,6 @@ for p in pages:
             st.session_state.page = p
             st.rerun()
 
-# if st.session_state.role == "admin":
-  #  page = st.sidebar.radio("Select a page", ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard"])
-#else:
- #   page = st.sidebar.radio("Select a page", ["Home", "Search", "Explorer", "US Reachback"])
-
 # --- Admin Page ---
 if st.session_state.page == "Admin":
     st.title("🛠 Admin Panel")
@@ -220,7 +215,7 @@ elif st.session_state.page == "Search":
                     with col4:
                         st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}")
                         st.button(f"`{row['group_capability']}`", key=f"group_capability_btn_{_}")
-                    st.markdown(f"- **👤 Global SME:** `{row['global_sme'] or 'TBC'}`")
+                    st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
                     st.markdown("**👥 Divisional Contacts:**")
                     st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
                     st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
