@@ -118,7 +118,7 @@ if st.session_state.page == "Admin":
             "cap_group": raw_df.get("Unnamed: 7", ""),
             "group_capability": raw_df.get("Unnamed: 8", ""),
             "global_sme": raw_df.get("Unnamed: 19", ""),
-            "sme_env": raw_df.get("Unnamed: 14", ""),
+            "sme_env": raw_df.get("Unnamed: 10", ""),
             "sme_energy": raw_df.get("Unnamed: 15", ""),
             "sme_das": raw_df.get("Unnamed: 16", ""),
             "sme_tci": raw_df.get("Unnamed: 17", ""),
