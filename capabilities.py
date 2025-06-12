@@ -245,7 +245,7 @@ elif st.session_state.page == "Explorer":
         st.markdown(f"- **Description:** {row['description'] or '*No description*'}")
         st.markdown(f"- **Capability Group:** `{row['cap_group']}`")
         st.markdown(f"- **Group Capability:** `{row['group_capability']}`")
-        st.markdown(f"- **👤 Global SME:** `{row['global_sme'] or 'TBC'}`")
+        st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
         st.markdown("**👥 Divisional Contacts:**")
         st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
         st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
