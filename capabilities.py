@@ -62,9 +62,9 @@ def insert_data(df):
 # --- Navigation ---
 st.sidebar.title("🧭 Navigation")
 if st.session_state.role == "admin":
-    page = st.sidebar.radio("Select a page", ["Home", "Admin", "Search", "Explorer", "Dashboard"])
+    page = st.sidebar.radio("Select a page", ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard"])
 else:
-    page = st.sidebar.radio("Select a page", ["Home", "Search", "Explorer"])
+    page = st.sidebar.radio("Select a page", ["Home", "Search", "Explorer", "US Reachback"])
 
 # --- Admin Page ---
 if page == "Admin":
@@ -228,6 +228,19 @@ elif page == "Explorer":
         st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
         st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
         st.markdown("---")
+# --- US Reachback Page ---
+
+elif page == "US Reachback":
+    st.title("US Reachback page")
+
+    us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
+
+    if us_capabilities is not None:
+        df = pd.read_excel(us_capabilities)
+        st.write("### Preview of Excel Data")
+        st.dataframe(df)
+
+
 
 # --- Dashboard Page ---
 elif page == "Dashboard":
