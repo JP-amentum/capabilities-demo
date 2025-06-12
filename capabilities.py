@@ -220,7 +220,6 @@ elif st.session_state.page == "Search":
                     with col4:
                         st.button(f"`{row['cap_group']}`")
                         st.button(f"`{row['group_capability']}`")
-                    st.markdown(f"- **Group Capability:** `{row['group_capability']}`")
                     st.markdown(f"- **👤 Global SME:** `{row['global_sme'] or 'TBC'}`")
                     st.markdown("**👥 Divisional Contacts:**")
                     st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
