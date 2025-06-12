@@ -213,8 +213,11 @@ elif st.session_state.page == "Search":
                     st.markdown(f"### 🧠 {row['skill']}")
                     st.markdown(f"- **Competency:** {row['competency']}")
                     st.markdown(f"- **Description:** {row['description'] or '*No description available*'}")
-                    st.markdown(f"- **Capability Group:**") 
-                    st.button(f"`{row['cap_group']}`")
+                    col3, col4 = st.columns(2)
+                    with col3:
+                        st.markdown(f"- **Capability Group:**") 
+                    with col2:
+                        st.button(f"`{row['cap_group']}`")
                     st.markdown(f"- **Group Capability:** `{row['group_capability']}`")
                     st.markdown(f"- **👤 Global SME:** `{row['global_sme'] or 'TBC'}`")
                     st.markdown("**👥 Divisional Contacts:**")
