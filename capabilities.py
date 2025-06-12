@@ -122,7 +122,8 @@ if st.session_state.page == "Admin":
             "sme_energy": raw_df.get("Unnamed: 15", ""),
             "sme_das": raw_df.get("Unnamed: 16", ""),
             "sme_tci": raw_df.get("Unnamed: 17", ""),
-            "sme_apac": raw_df.get("Unnamed: 18", "")
+            "sme_apac": raw_df.get("Unnamed: 18", ""),
+            "key_words": raw.df.get("Key Words", "")
         })
 
         insert_data(mapped_df)
