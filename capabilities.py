@@ -157,6 +157,7 @@ elif page == "Home":
     st.text("Please select one of the options below")
     def navigate(page_name):
         st.session_state.page = page_name
+        st.rerun()
     col1, col2 = st.columns(2)
 
     with col1:
