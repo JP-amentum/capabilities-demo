@@ -63,8 +63,8 @@ def insert_data(df):
 st.sidebar.title("🧭 Navigation")
 
 
-pages_admin = ["Home, "Admin", "Search", "Explorer", "US Reachback", "Dashboard"]
-pages_user = ["Home, "Search", "Explorer", "US Reachback"]
+pages_admin = ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard"]
+pages_user = ["Home", "Search", "Explorer", "US Reachback"]
 pages = pages_admin if st.session_state.role == "admin" else pages_user
 
 for p in pages:
