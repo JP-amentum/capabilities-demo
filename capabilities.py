@@ -194,7 +194,8 @@ elif st.session_state.page == "Search":
     if search:
         filtered = df[
             df["skill"].str.contains(search, case=False, na=False) |
-            df["competency"].str.contains(search, case=False, na=False)
+            df["competency"].str.contains(search, case=False, na=False) |
+            df["key_words"].str.contains(search, case=False, na=False)
         ]
 
 
