@@ -116,13 +116,13 @@ if st.session_state.page == "Admin":
             "skill": raw_df.get("Skill", ""),
             "description": raw_df.get("Description", ""),
             "cap_group": raw_df.get("Unnamed: 7", ""),
-            "group_capability": raw_df.get("Unnamed: 9", ""),
-            "global_sme": raw_df.get("Lead Contact in Division (SME, Team Lead, Head of etc)", ""),
-            "sme_env": raw_df.get("Lead Contact in Division (SME, Team Lead, Head of etc)", ""),
-            "sme_energy": raw_df.get("Unnamed: 17", ""),
-            "sme_das": raw_df.get("Unnamed: 18", ""),
-            "sme_tci": raw_df.get("Unnamed: 19", ""),
-            "sme_apac": raw_df.get("Unnamed: 20", "")
+            "group_capability": raw_df.get("Unnamed: 8", ""),
+            "global_sme": raw_df.get("Unnamed: 19", ""),
+            "sme_env": raw_df.get("Unnamed: 14", ""),
+            "sme_energy": raw_df.get("Unnamed: 15", ""),
+            "sme_das": raw_df.get("Unnamed: 16", ""),
+            "sme_tci": raw_df.get("Unnamed: 17", ""),
+            "sme_apac": raw_df.get("Unnamed: 18", "")
         })
 
         insert_data(mapped_df)
