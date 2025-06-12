@@ -139,7 +139,7 @@ if st.session_state.page == "Admin":
         ]
 
     for i, row in db_df.iterrows():
-        with st.expander(f"🧠 {row['skill']} — {row['discipline']}"):
+        with st.expander(f"🧠 {row['skill']} — {row['domain']}"):
             with st.form(f"edit_form_{row['id']}"):
                 new_data = {
                     "domain": st.text_input("Domain", row["domain"], key=f"domain_{i}"),
