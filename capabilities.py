@@ -181,8 +181,8 @@ elif st.session_state.page == "Home":
         if st.button("🔍 Search"):
             navigate("Search")
     with col2:
-        if st.button("📚 Explore"):
-            navigate("Explore")
+        if st.button("📚 Explorer"):
+            navigate("Explorer")
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
