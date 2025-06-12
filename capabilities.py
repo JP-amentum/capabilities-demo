@@ -117,13 +117,13 @@ if st.session_state.page == "Admin":
             "description": raw_df.get("Description", ""),
             "cap_group": raw_df.get("Unnamed: 7", ""),
             "group_capability": raw_df.get("Unnamed: 8", ""),
-            "global_sme": raw_df.get("Unnamed: 19", ""),
+            "global_sme": raw_df.get("Head of Profession", ""),
             "sme_env": raw_df.get("Environment", ""),
             "sme_energy": raw_df.get("Unnamed: 15", ""),
             "sme_das": raw_df.get("Unnamed: 16", ""),
             "sme_tci": raw_df.get("Unnamed: 17", ""),
             "sme_apac": raw_df.get("Unnamed: 18", ""),
-            "key_words": raw.df.get("Key Words", "")
+            "key_words": raw.df.get("Keywords", "")
         })
 
         insert_data(mapped_df)
