@@ -216,7 +216,7 @@ elif st.session_state.page == "Search":
                     col3, col4 = st.columns(2)
                     with col3:
                         st.markdown(f"- **Capability Group:**")
-                         st.markdown(f"- **Group Capability:**")
+                        st.markdown(f"- **Group Capability:**")
                     with col4:
                         st.button(f"`{row['cap_group']}`")
                         st.button(f"`{row['group_capability']}`")
