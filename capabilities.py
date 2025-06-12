@@ -115,7 +115,7 @@ if st.session_state.page == "Admin":
             "competency": raw_df.get("Competency", ""),
             "skill": raw_df.get("Skill", ""),
             "description": raw_df.get("Description", ""),
-            "cap_group": raw_df.get("Unnamed: 8", ""),
+            "cap_group": raw_df.get("Unnamed: 7", ""),
             "group_capability": raw_df.get("Unnamed: 9", ""),
             "global_sme": raw_df.get("Lead Contact in Division (SME, Team Lead, Head of etc)", ""),
             "sme_env": raw_df.get("Lead Contact in Division (SME, Team Lead, Head of etc)", ""),
