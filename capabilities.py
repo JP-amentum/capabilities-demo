@@ -233,6 +233,8 @@ elif st.session_state.page == "Search":
 elif st.session_state.page == "Explorer":
     st.title("🗂️ Capability Explorer")
     df = load_data_from_db()
+    df = df.dropna(how='all')
+    
     if df.empty:
         st.warning("No data found. Admins must upload a capability file.")
         st.stop()
