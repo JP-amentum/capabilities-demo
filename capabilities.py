@@ -61,13 +61,27 @@ def insert_data(df):
 
 # --- Navigation ---
 st.sidebar.title("🧭 Navigation")
-if st.session_state.role == "admin":
-    page = st.sidebar.radio("Select a page", ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard"])
-else:
-    page = st.sidebar.radio("Select a page", ["Home", "Search", "Explorer", "US Reachback"])
+
+
+pages_admin = ["Home, "Admin", "Search", "Explorer", "US Reachback", "Dashboard"]
+pages_user = ["Home, "Search", "Explorer", "US Reachback"]
+pages = pages_admin if st.session_state.role == "admin" else pages_user
+
+for p in pages:
+    if st.session_state.page == p:
+        st.sidebar.markdown(f"**➡️ {p}**")
+    else:
+        if st.sidebar.button(p):
+            st.session_state.page = p
+            st.rerun()
+
+# if st.session_state.role == "admin":
+  #  page = st.sidebar.radio("Select a page", ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard"])
+#else:
+ #   page = st.sidebar.radio("Select a page", ["Home", "Search", "Explorer", "US Reachback"])
 
 # --- Admin Page ---
-if page == "Admin":
+if st.session_state.page == "Admin":
     st.title("🛠 Admin Panel")
 
     uploaded_file = st.file_uploader("Upload Excel File", type=["xlsx"])
@@ -151,7 +165,7 @@ if page == "Admin":
                     st.success("Changes saved.")
 
 # --- Home Page ---
-elif page == "Home":
+elif st.session_state.page == "Home":
     st.title("Welcome to CapabilityConnect!")
     st.text("CapabilityConnect is the primary search and discovery tool for capabilities in Amentum E&E-I")
     st.text("Please select one of the options below")
@@ -168,7 +182,7 @@ elif page == "Home":
             navigate("Explore")
             
 # --- Search Page ---
-elif page == "Search":
+elif st.session_state.page == "Search":
     st.title("🔍 Capability Search")
     df = load_data_from_db()
     search = st.text_input("Search for a skill or competency")
@@ -205,7 +219,7 @@ elif page == "Search":
                     st.markdown("---")
 
 # --- Explorer Page ---
-elif page == "Explorer":
+elif st.session_state.page == "Explorer":
     st.title("🗂️ Capability Explorer")
     df = load_data_from_db()
     if df.empty:
@@ -231,7 +245,7 @@ elif page == "Explorer":
         st.markdown("---")
 # --- US Reachback Page ---
 
-elif page == "US Reachback":
+elif st.session_state.page == "US Reachback":
     st.title("US Reachback page")
 
     us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
@@ -244,7 +258,7 @@ elif page == "US Reachback":
 
 
 # --- Dashboard Page ---
-elif page == "Dashboard":
+elif st.session_state.page == "Dashboard":
     st.title("📊 Capability Dashboard")
     df = load_data_from_db()
     if df.empty:
