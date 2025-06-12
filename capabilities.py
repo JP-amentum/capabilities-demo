@@ -123,7 +123,7 @@ if st.session_state.page == "Admin":
             "sme_das": raw_df.get("Unnamed: 16", ""),
             "sme_tci": raw_df.get("Unnamed: 17", ""),
             "sme_apac": raw_df.get("Unnamed: 18", ""),
-            "key_words": raw.df.get("Keywords", "")
+            "key_words": raw_df.get("Keywords", "")
         })
 
         insert_data(mapped_df)
