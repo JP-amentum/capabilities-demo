@@ -25,7 +25,10 @@ if not st.session_state.role:
     elif pwd:
         st.error("Incorrect password.")
     st.stop()
-
+    
+if "page" not in st.session_state:
+    st.session_state.page = "Home"
+    
 # --- SQLite Setup ---
 DB_FILE = "capabilities.db"
 
