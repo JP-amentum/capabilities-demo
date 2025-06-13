@@ -172,17 +172,19 @@ elif st.session_state.page == "Home":
     def navigate(page_name):
         st.session_state.page = page_name
         st.rerun()
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         if st.button("🔍 Search"):
             navigate("Search")
-        if st.button("Feedback"):
-            navigate("Feedback")
             
     with col2:
         if st.button("📚 Explorer"):
             navigate("Explorer")
+
+    with col3:
+        if st.button("Feedback"):
+            navigate("Feedback")
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
