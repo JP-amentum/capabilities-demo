@@ -325,15 +325,16 @@ elif st.session_state.page == "Feedback":
 
 # Create table if it doesn't exist
     feedback_cursor.execute("""
-    CREATE TABLE IF NOT EXISTS feedback (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        email TEXT,
-        rating INTEGER,
-        comments TEXT,
-        submitted_at TEXT
-        )
-    """)
+        CREATE TABLE IF NOT EXISTS feedback(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT,
+            reating INTEGER,
+            comments TEXT,
+            submitted_at TEXT
+        )
+    """)
+
     feedback_conn.commit()
 
 # Feedback form
