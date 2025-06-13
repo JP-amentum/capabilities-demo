@@ -13,7 +13,7 @@ if "role" not in st.session_state:
     st.session_state.role = None
 
 if not st.session_state.role:
-    st.title("🔐 Login to Amentum Capability App")
+    st.title("🔐 Login to Amentum CapabilityConnect")
     pwd = st.text_input("Enter password", type="password")
     hashed = hashlib.sha256(pwd.encode()).hexdigest()
     if hashed == VIEWER_PASSWORD:
