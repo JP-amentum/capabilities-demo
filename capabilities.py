@@ -67,8 +67,8 @@ def insert_data(df):
 st.sidebar.title("🧭 Navigation")
 
 
-pages_admin = ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard"]
-pages_user = ["Home", "Search", "Explorer", "US Reachback"]
+pages_admin = ["Home", "Admin", "Search", "Explorer", "US Reachback", "Dashboard", "Feedback"]
+pages_user = ["Home", "Search", "Explorer", "US Reachback", "Feedback"]
 pages = pages_admin if st.session_state.role == "admin" else pages_user
 
 for p in pages:
@@ -177,6 +177,9 @@ elif st.session_state.page == "Home":
     with col1:
         if st.button("🔍 Search"):
             navigate("Search")
+        if st.button("Feedback"):
+            navigate("Feedback")
+            
     with col2:
         if st.button("📚 Explorer"):
             navigate("Explorer")
@@ -308,3 +311,7 @@ elif st.session_state.page == "Dashboard":
         data=df.to_csv(index=False),
         file_name="amentum_capabilities.csv"
     )
+    
+# --- Feedback Page ---
+elif st.session_state.page == "Feedback":
+    st.title("Feedback Form")
