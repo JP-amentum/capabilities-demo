@@ -329,7 +329,7 @@ elif st.session_state.page == "Feedback":
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             email TEXT,
-            reating INTEGER,
+            rating INTEGER,
             comments TEXT,
             submitted_at TEXT
         )
