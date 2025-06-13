@@ -216,7 +216,7 @@ elif st.session_state.page == "Search":
                         st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}")
                         st.button(f"`{row['group_capability']}`", key=f"group_capability_btn_{_}")
                     st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
-                    st.markdown("**👥 Divisional Contacts:**")
+                    st.markdown("- **👥 Divisional Contacts:**")
                     st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
                     st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
                     st.markdown(f"  - D&AS: `{row['sme_das'] or 'TBC'}`")
