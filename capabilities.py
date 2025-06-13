@@ -3,6 +3,7 @@ import pandas as pd
 import sqlite3
 import hashlib
 import altair as alt
+from datetime import datetime
 
 # --- Password Hashes ---
 VIEWER_PASSWORD = "a031faaa259fb838388c52358bd295b06cefaf784df98000e9cff353c27fda4f" # 'amentum2025'
@@ -316,4 +317,45 @@ elif st.session_state.page == "Dashboard":
     
 # --- Feedback Page ---
 elif st.session_state.page == "Feedback":
-    st.title("Feedback Form")
+    st.title("📝 Feedback Form")
+    
+# Use a unique variable name for the feedback database connectio
+    feedback_conn = sqlite3.connect("feedback.db", check_same_thread=False)
+    feedback_cursor = feedback_conn.cursor()
+
+# Create table if it doesn't exist
+    feedback_cursor.execute("""
+    CREATE TABLE IF NOT EXISTS feedback (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        email TEXT,
+        rating INTEGER,
+        comments TEXT,
+        submitted_at TEXT
+    )
+    """)
+    feedback_conn.commit()
+
+# Feedback form
+    with st.form("feedback_form"):
+        name = st.text_input("Your Name")
+        email = st.text_input("Your Email")
+        rating = st.slider("How would you rate the app?", 1, 5, 3)
+        comments = st.text_area("Additional Comments")
+        submitted = st.form_submit_button("Submit Feedback")
+        
+        if submitted:
+            timestamp = datetime.now().isoformat()
+            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, comments, submitted_at) VALUES (?, ?, ?, ?, ?)",
+                                    (name, email, rating, comments, timestamp))
+            feedback_conn.commit()
+            st.success("Thank you for your feedback! 🎉")
+
+# Download feedback as CSV
+    st.markdown("### 📥 Download Feedback")
+    if st.button("Download CSV"):
+        df = pd.read_sql_query("SELECT * FROM feedback", feedback_conn)
+        csv = df.to_csv(index=False)
+        st.download_button("Click to Download", csv, "feedback.csv", "text/csv")
+
+
