@@ -183,7 +183,7 @@ elif st.session_state.page == "Home":
             navigate("Explorer")
 
     with col3:
-        if st.button("Feedback"):
+        if st.button("💬 Feedback"):
             navigate("Feedback")
             
 # --- Search Page ---
