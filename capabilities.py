@@ -332,7 +332,7 @@ elif st.session_state.page == "Feedback":
         rating INTEGER,
         comments TEXT,
         submitted_at TEXT
-    )
+        )
     """)
     feedback_conn.commit()
 
