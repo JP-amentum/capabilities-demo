@@ -264,7 +264,9 @@ elif st.session_state.page == "Explorer":
 elif st.session_state.page == "US Reachback":
     st.title("US Reachback page")
 
-    us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
+   # (keep option for later date) us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
+
+   # default_path = os.path.join("capabilities-demo", "us_capability_groups.xlsx")
 
     if us_capabilities is not None:
         df = pd.read_excel(us_capabilities)
