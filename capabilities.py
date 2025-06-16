@@ -101,7 +101,7 @@ def insert_data(df):
 
 # --- Navigation ---
 st.sidebar.image("Amentum_Logo_White_H.png", use_container_width=True)
-st.sidebar.title("Navigation")
+st.sidebar.title("  Navigation")
 
 st.sidebar.markdown("""
     <hr style="border:none; height: 3px; background-color: #39B54A; margin-top: -10px; margin-bottom: 20px;">
