@@ -19,6 +19,17 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# --- Change Sidebar Colours ---
+st.markdown("""
+    <style>
+    section[data-testid="stSidebar"] {
+        background-color: #000000;
+    }
+    section[data-testid="stSidebar"] * {
+        color: #FFFFFF !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # --- Auth ---
 if "role" not in st.session_state:
