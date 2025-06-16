@@ -22,10 +22,23 @@ st.markdown("""
 # --- Change Sidebar Colours ---
 st.markdown("""
     <style>
+    /* Sidebar background */
     section[data-testid="stSidebar"] {
         background-color: #000000;
     }
+    /* Sidebar text*/
     section[data-testid="stSidebar"] * {
+        color: #FFFFFF !important;
+    }
+    /* Sidebar buttons */
+    section[data-testid="stSidebar"] button {
+        background-color: #000000 !important;
+        color: #FFFFFF !important;
+        border: 1px solid #FFFFFF !important;
+    }
+    /* Button hover effect */
+    section[data-testid="stSidebar"] button:hover {
+        background-color: #000000 !important;
         color: #FFFFFF !important;
     }
     </style>
