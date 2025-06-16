@@ -226,10 +226,14 @@ elif st.session_state.page == "Home":
         if st.button("💬 Feedback"):
             navigate("Feedback")
 
-    col4, col5, col6 = st.columns(3)
-
-    with col5:
-        st.image("Amentum_Logo_V.png", width=500)
+    st.markdown(
+        """
+        <div style="display:flex; justify-content: center:">
+            <img src="Amentum_Logo_V.png" style="max-width: 100%; height: auto;" />
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
