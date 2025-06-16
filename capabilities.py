@@ -400,6 +400,7 @@ elif st.session_state.page == "Feedback":
             name TEXT,
             email TEXT,
             rating INTEGER,
+            choice TEXT,
             comments TEXT,
             submitted_at TEXT
         )
@@ -412,13 +413,14 @@ elif st.session_state.page == "Feedback":
         name = st.text_input("Your Name")
         email = st.text_input("Your Email")
         rating = st.slider("How would you rate the app?", 1, 5, 3)
+        choice = st.selectbox("What kind of feedback do you wish to submit?", ["Report a fault or issue", "Make a suggestion"]
         comments = st.text_area("Additional Comments")
         submitted = st.form_submit_button("Submit Feedback")
         
         if submitted:
             timestamp = datetime.now().isoformat()
-            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, comments, submitted_at) VALUES (?, ?, ?, ?, ?)",
-                                    (name, email, rating, comments, timestamp))
+            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, choice, comments, submitted_at) VALUES (?, ?, ?, ?, ?)",
+                                    (name, email, rating, choice, comments, timestamp))
             feedback_conn.commit()
             st.success("Thank you for your feedback! 🎉")
 
