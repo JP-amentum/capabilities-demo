@@ -10,6 +10,15 @@ import os
 VIEWER_PASSWORD = "a031faaa259fb838388c52358bd295b06cefaf784df98000e9cff353c27fda4f" # 'amentum2025'
 ADMIN_PASSWORD = "0e89f223e226ae63268cf39152ab75722e811b89d29efb22a852f1667bd22ae0"  # 'admin2025'
 
+# --- Colourful Titles ---
+st.markdown("""
+    <style>
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
+        color: #39B54A;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # --- Auth ---
 if "role" not in st.session_state:
@@ -262,16 +271,6 @@ elif st.session_state.page == "Explorer":
         st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
         st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
         st.markdown("---")
-
-# --- Colourful Titles ---
-st.markdown("""
-    <style>
-    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
-        color: #39B54A;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 
 # --- US Reachback Page ---
 
