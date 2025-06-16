@@ -285,7 +285,7 @@ elif st.session_state.page == "US Reachback":
                     grouping_df = df[df['Capability_Groups'] == grouping][['Capabilities', 'Contact', 'Email']]
                     st.dataframe(grouping_df)
         else:
-            st.error("The Excel file must contain the columns: Composer, Piece, Key, and Tempo.")
+            st.error("The Excel file must contain the columns: Capability_Groups, Capabilities, Contact, and Email.")
 
     else:
         st.warning("Default Excel file not found.")
