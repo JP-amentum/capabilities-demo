@@ -228,7 +228,7 @@ elif st.session_state.page == "Home":
 
     st.markdown(
         """
-        <div style="display:flex; justify-content: center:">
+        <div style="display:flex; justify-content: center;">
             <img src="Amentum_Logo_V.png" style="max-width: 100%; height: auto;" />
         </div>
         """,
