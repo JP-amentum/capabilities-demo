@@ -275,7 +275,7 @@ elif st.session_state.page == "US Reachback":
     if os.path.exists(default_path):
         df = pd.read_excel(default_path, engine='openpyxl')
 
-        if all(col in df.columns for col in ['Capability_Groups', 'Capabilities', 'Contact', ' Email']):
+        if all(col in df.columns for col in ['Capability_Groups', 'Capabilities', 'Contact', 'Email']):
             st.write("### Capability Groups ")
         
             groupings = df['Capability_Groups'].dropna().unique()
