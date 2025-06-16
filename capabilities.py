@@ -276,16 +276,16 @@ elif st.session_state.page == "US Reachback":
         df = pd.read_excel(default_path, engine='openpyx1')
 
         if all(col in df.columns for col in ['Capability_Groups', 'Capabilities', 'Contact', ' Email']):
-        st.write("### Capability Groups ")
+            st.write("### Capability Groups ")
         
-        groupings = df['Capability_Groups'].dropna().unique()
+            groupings = df['Capability_Groups'].dropna().unique()
 
-        for grouping in sorted(groupings):
-            with st.expander(grouping):
-                grouping_df = df[df['Capability_Groups'] == grouping][['Capabilities', 'Contact', 'Email']]
-                st.dataframe(grouping_df)
+            for grouping in sorted(groupings):
+                with st.expander(grouping):
+                    grouping_df = df[df['Capability_Groups'] == grouping][['Capabilities', 'Contact', 'Email']]
+                    st.dataframe(grouping_df)
         else:
-        st.error("The Excel file must contain the columns: Composer, Piece, Key, and Tempo.")
+            st.error("The Excel file must contain the columns: Composer, Piece, Key, and Tempo.")
 
     else:
         st.warning("Default Excel file not found.")
