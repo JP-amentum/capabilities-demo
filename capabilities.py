@@ -228,7 +228,7 @@ elif st.session_state.page == "Home":
 
     col4, col5, col6 = st.columns([1, 2, 1])
     with col5:
-        st.image("Amentum_Logo_V.png", use_column_width=True)
+        st.image("Amentum_Logo_V.png", use_container_width=True)
 
     #st.markdown(
       #  """
