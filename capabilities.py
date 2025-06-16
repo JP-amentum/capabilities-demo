@@ -118,7 +118,7 @@ for p in pages:
         if st.sidebar.button(p):
             st.session_state.page = p
             st.rerun()
-#➡️
+            
 # --- Admin Page ---
 if st.session_state.page == "Admin":
     st.title("🛠 Admin Panel")
@@ -225,6 +225,8 @@ elif st.session_state.page == "Home":
     with col3:
         if st.button("💬 Feedback"):
             navigate("Feedback")
+
+    st.image("Amentum_Logo_White_H.png", use_container_width=True)
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
