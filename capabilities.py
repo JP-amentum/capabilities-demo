@@ -266,13 +266,13 @@ elif st.session_state.page == "US Reachback":
 
    # (keep option for later date) us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
 
-   # default_path = os.path.join("capabilities-demo", "us_capability_groups.xlsx")
-
-    if us_capabilities is not None:
-        df = pd.read_excel(us_capabilities)
+    default_path = os.path.join("capabilities-demo", "us_capability_groups.xlsx")
+    if os.path.exists(default_path):
+        df = pd.read_excel(default_path)
         st.write("### Preview of Excel Data")
         st.dataframe(df)
-
+    else:
+        st.warning("Default Excel file not found.")
 
 
 # --- Dashboard Page ---
