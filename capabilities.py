@@ -401,6 +401,9 @@ elif st.session_state.page == "Feedback":
             email TEXT,
             rating INTEGER,
             choice TEXT,
+            question TEXT,
+            success TEXT,
+            suggestion TEXT,
             comments TEXT,
             submitted_at TEXT
         )
@@ -412,15 +415,18 @@ elif st.session_state.page == "Feedback":
     with st.form("feedback_form"):
         name = st.text_input("Your Name")
         email = st.text_input("Your Email")
-        rating = st.slider("How would you rate the app?", 1, 5, 3)
+        rating = st.slider("Overall, how would you rate your experience using CapabilityConnect?", 1, 5, 3)
         choice = st.selectbox("What kind of feedback do you wish to submit?", ["Report a fault or issue", "Make a suggestion"])
+        question = st.text_input("What were you searching for? (If leaving a suggestion for the app, please ignore this question and the next)")
+        success = st.radio("Did you find what you were looking for?", ["Yes", "No"])
+        suggestion = st.text_area("Please enter your suggestions for how the app can be improved below")
         comments = st.text_area("Additional Comments")
         submitted = st.form_submit_button("Submit Feedback")
         
         if submitted:
             timestamp = datetime.now().isoformat()
-            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, choice, comments, submitted_at) VALUES (?, ?, ?, ?, ?)",
-                                    (name, email, rating, choice, comments, timestamp))
+            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, choice, question, success, suggestion, comments, submitted_at) VALUES (?, ?, ?, ?, ?)",
+                                    (name, email, rating, choice, question, success, suggestion, comments, timestamp))
             feedback_conn.commit()
             st.success("Thank you for your feedback! 🎉")
 
