@@ -66,6 +66,7 @@ def insert_data(df):
         df.to_sql("capabilities", conn, if_exists="append", index=False)
 
 # --- Navigation ---
+#st.sidebar.image("Amentum_Logo-RGB-
 st.sidebar.title("🧭 Navigation")
 
 
