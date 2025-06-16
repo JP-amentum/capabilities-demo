@@ -228,7 +228,7 @@ elif st.session_state.page == "Home":
 
     col4, col5, col6 = st.columns(3)
 
-    with col4:
+    with col5:
         st.image("Amentum_Logo_V.png", width=500)
             
 # --- Search Page ---
