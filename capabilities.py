@@ -226,7 +226,7 @@ elif st.session_state.page == "Home":
         if st.button("💬 Feedback"):
             navigate("Feedback")
 
-    st.image("Amentum_Logo_V.png", width=150)
+    st.image("Amentum_Logo_V.png", width=500)
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
