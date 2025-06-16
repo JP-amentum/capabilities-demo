@@ -215,7 +215,7 @@ elif st.session_state.page == "Home":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("🔍 Search"):
+        if st.button("🔍 Search", use_container_width=True):
             navigate("Search")
             
     with col2:
@@ -223,7 +223,7 @@ elif st.session_state.page == "Home":
             navigate("Explorer")
 
     with col3:
-        if st.button("💬 Feedback"):
+        if st.button("💬 Feedback", use_container_width=True):
             navigate("Feedback")
 
     col4, col5, col6 = st.columns([1, 3, 1])
