@@ -38,7 +38,7 @@ st.markdown("""
     }
     /* Button hover effect */
     section[data-testid="stSidebar"] button:hover {
-        background-color: #000000 !important;
+        background-color: #39B54A !important;
         color: #FFFFFF !important;
     }
     </style>
