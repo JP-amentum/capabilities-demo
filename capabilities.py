@@ -264,7 +264,7 @@ elif st.session_state.page == "Explorer":
 # --- US Reachback Page ---
 
 elif st.session_state.page == "US Reachback":
-    st.title("US Reachback page")
+    st.title("US Reachback Capabilities")
 
    # (keep option for later date) us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
 
