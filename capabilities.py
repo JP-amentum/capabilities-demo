@@ -14,7 +14,7 @@ ADMIN_PASSWORD = "0e89f223e226ae63268cf39152ab75722e811b89d29efb22a852f1667bd22a
 # --- Colourful Titles ---
 st.markdown("""
     <style>
-    h1, h2, h3, h4, h5, h6 {
+    .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
         color: #39B54A;
     }
     </style>
