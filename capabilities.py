@@ -226,7 +226,7 @@ elif st.session_state.page == "Home":
         if st.button("💬 Feedback"):
             navigate("Feedback")
 
-    col4, col5, col6 = st.columns([1, 2, 1])
+    col4, col5, col6 = st.columns([1, 4, 1])
     with col5:
         st.image("Amentum_Logo_V.png", use_container_width=True)
 
