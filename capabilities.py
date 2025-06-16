@@ -113,12 +113,12 @@ pages = pages_admin if st.session_state.role == "admin" else pages_user
 
 for p in pages:
     if st.session_state.page == p:
-        st.sidebar.markdown(f"**➡️ {p}**")
+        st.sidebar.markdown(f"**➡ {p}**")
     else:
         if st.sidebar.button(p):
             st.session_state.page = p
             st.rerun()
-
+#➡️
 # --- Admin Page ---
 if st.session_state.page == "Admin":
     st.title("🛠 Admin Panel")
