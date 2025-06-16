@@ -269,8 +269,8 @@ elif st.session_state.page == "US Reachback":
 
     default_path = "us_capability_groups.xlsx"
 
-    st.write(f"Looking for file at: {default_path}")
-    st.write(f"Current working directory: {os.getcwd()}")
+    #st.write(f"Looking for file at: {default_path}")
+    #st.write(f"Current working directory: {os.getcwd()}")
     
     if os.path.exists(default_path):
         df = pd.read_excel(default_path)
