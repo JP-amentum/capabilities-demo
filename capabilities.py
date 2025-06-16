@@ -212,7 +212,7 @@ elif st.session_state.page == "Home":
     def navigate(page_name):
         st.session_state.page = page_name
         st.rerun()
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns([3, 3, 3])
 
     with col1:
         if st.button("🔍 Search", use_container_width=True):
