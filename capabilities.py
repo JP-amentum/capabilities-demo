@@ -267,6 +267,10 @@ elif st.session_state.page == "US Reachback":
    # (keep option for later date) us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
 
     default_path = "us_capability_groups.xlsx"
+
+    st.write(f"Looking for file at: {default_path}")
+    st.write(f"Current working directory: {os.getcwd()}")
+    
     if os.path.exists(default_path):
         df = pd.read_excel(default_path)
         st.write("### Preview of Excel Data")
