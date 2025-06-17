@@ -233,8 +233,7 @@ elif st.session_state.page == "Home":
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
-    #if "selected_cap_group" not in st.session_state:
-     #   st.session_state.selected_cap_group = None
+   
     st.title("🔍 Capability Search")
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
@@ -248,10 +247,10 @@ elif st.session_state.page == "Search":
             df["key_words"].str.contains(search, case=False, na=False)
         ]
     else:
-        filtered = pd.copy()
+        filtered = df.copy()
     
     if selected_domains :
-            filtered = filtered[filtered["domain"].isin(selected_domains)]
+        filtered = filtered[filtered["domain"].isin(selected_domains)]
     
         
         st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
