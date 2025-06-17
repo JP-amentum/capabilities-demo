@@ -241,26 +241,18 @@ elif st.session_state.page == "Search":
     search = st.text_input("Search for a skill or competency")
     selected_domains = st.multiselect("Filter by Discipline(s)", options=domains)
 
-    if search or selected_domains:
+    if search : #or selected_domains:
         filtered = df[
             df["skill"].str.contains(search, case=False, na=False) |
             df["competency"].str.contains(search, case=False, na=False) |
             df["key_words"].str.contains(search, case=False, na=False)
         ]
-
-        if selected_domains :
-            filtered = filtered[filtered["domain"].isin(selected_domains)]
     else:
-        filtered = pd.DataFrame()
-
-        #if st.session_state.selected_cap_group:
-         #   filtered = filtered[
-          #      filtered["cap_group"].str.contains(st.session_state.selected_cap_group, case=False, na=False)
-          #  ]
-    #if st.session_state.selected_cap_group:
-     #   st.info(f"🔘 Filtering by Capability Group: `{st.session_state.selected_cap_group}`")
-      #  if st.button("Clear Capability Group Filter"):
-       #     st.session_state.selected_cap_group = None
+        filtered = pd.copy()
+    
+    if selected_domains :
+            filtered = filtered[filtered["domain"].isin(selected_domains)]
+    
         
         st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
 
