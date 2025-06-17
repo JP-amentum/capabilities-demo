@@ -430,7 +430,7 @@ elif st.session_state.page == "Feedback":
         
         if submitted:
             timestamp = datetime.now().isoformat()
-            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, choice, question, success, suggestion, comments, submitted_at) VALUES (?, ?, ?, ?, ?)",
+            feedback_cursor.execute("INSERT INTO feedback (name, email, rating, choice, question, success, suggestion, comments, submitted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                                     (name, email, rating, choice, question, success, suggestion, comments, timestamp))
             feedback_conn.commit()
             st.success("Thank you for your feedback! 🎉")
