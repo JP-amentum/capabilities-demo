@@ -233,27 +233,27 @@ elif st.session_state.page == "Home":
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
-    if "selected_cap_group" not in st.session_state:
-        st.session_state.selected_cap_group = None
+    #if "selected_cap_group" not in st.session_state:
+     #   st.session_state.selected_cap_group = None
     st.title("🔍 Capability Search")
     df = load_data_from_db()
     search = st.text_input("Search for a skill or competency")
 
-    if search or st.session_state.selected_cap_group:
+    if search #or st.session_state.selected_cap_group:
         filtered = df[
             df["skill"].str.contains(search, case=False, na=False) |
             df["competency"].str.contains(search, case=False, na=False) |
             df["key_words"].str.contains(search, case=False, na=False)
         ]
 
-        if st.session_state.selected_cap_group:
-            filtered = filtered[
-                filtered["cap_group"].str.contains(st.session_state.selected_cap_group, case=False, na=False)
+        #if st.session_state.selected_cap_group:
+         #   filtered = filtered[
+          #      filtered["cap_group"].str.contains(st.session_state.selected_cap_group, case=False, na=False)
             ]
-    if st.session_state.selected_cap_group:
-        st.info(f"🔘 Filtering by Capability Group: `{st.session_state.selected_cap_group}`")
-        if st.button("Clear Capability Group Filter"):
-            st.session_state.selected_cap_group = None
+    #if st.session_state.selected_cap_group:
+     #   st.info(f"🔘 Filtering by Capability Group: `{st.session_state.selected_cap_group}`")
+      #  if st.button("Clear Capability Group Filter"):
+       #     st.session_state.selected_cap_group = None
         
         st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
 
@@ -273,7 +273,7 @@ elif st.session_state.page == "Search":
                         st.markdown(f"- **Capability Group:**")
                     with col4:
                         if st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}"):
-                            st.session_state.selected_cap_group = row['cap_group']
+                            #st.session_state.selected_cap_group = row['cap_group']
                     col3, col4 = st.columns([1, 3])
                     with col3:
                         st.markdown(f"- **Group Capability:**")
