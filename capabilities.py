@@ -239,7 +239,7 @@ elif st.session_state.page == "Search":
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
     search = st.text_input("Search for a skill or competency")
-    selected_domain = st.selectbox("Filter by Discipline", options=["All"] + sorted(domains))
+    selected_domain = st.multiselect("Filter by Discipline", options=domains)
 
     if search : #or st.session_state.selected_cap_group:
         filtered = df[
@@ -249,7 +249,7 @@ elif st.session_state.page == "Search":
         ]
 
         if selected_domain != "All":
-            filtered = filtered[filtered["domain"] == selected_domain]
+            filtered = filtered[filtered["domain"].isin(selected_domain)]
 
         #if st.session_state.selected_cap_group:
          #   filtered = filtered[
