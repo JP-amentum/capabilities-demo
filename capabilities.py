@@ -249,7 +249,7 @@ elif st.session_state.page == "Search":
         #if st.session_state.selected_cap_group:
          #   filtered = filtered[
           #      filtered["cap_group"].str.contains(st.session_state.selected_cap_group, case=False, na=False)
-            ]
+          #  ]
     #if st.session_state.selected_cap_group:
      #   st.info(f"🔘 Filtering by Capability Group: `{st.session_state.selected_cap_group}`")
       #  if st.button("Clear Capability Group Filter"):
