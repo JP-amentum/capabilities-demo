@@ -230,14 +230,6 @@ elif st.session_state.page == "Home":
     with col5:
         st.image("Amentum_Logo_V.png", use_container_width=True)
 
-    #st.markdown(
-      #  """
-       # <div style="display:flex; justify-content: center;">
-          #  <img src="Amentum_Logo_V.png" style="max-width: 100%; height: auto;" />
-       # </div>
-      #  """,
-      #  unsafe_allow_html=True
-  #  )
             
 # --- Search Page ---
 elif st.session_state.page == "Search":
@@ -431,10 +423,13 @@ elif st.session_state.page == "Feedback":
             st.success("Thank you for your feedback! 🎉")
 
 # Download feedback as CSV
-    st.markdown("### 📥 Download Feedback")
-    if st.button("Download CSV"):
-        df = pd.read_sql_query("SELECT * FROM feedback", feedback_conn)
-        csv = df.to_csv(index=False)
-        st.download_button("Click to Download", csv, "feedback.csv", "text/csv")
+    if st.session_state.role == "admin":
+        st.markdown("### 📥 Download Feedback")
+        if st.button("Download CSV"):
+            df = pd.read_sql_query("SELECT * FROM feedback", feedback_conn)
+            csv = df.to_csv(index=False)
+            st.download_button("Click to Download", csv, "feedback.csv", "text/csv")
+    else st.session_state.role == "viewer":
+        
 
 
