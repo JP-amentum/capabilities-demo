@@ -237,7 +237,9 @@ elif st.session_state.page == "Search":
      #   st.session_state.selected_cap_group = None
     st.title("🔍 Capability Search")
     df = load_data_from_db()
+    domains = df["domain"].dropna().unique()
     search = st.text_input("Search for a skill or competency")
+    selected_domain = st.multiselect("Filter by Domain", options=["All"] + sorted(domains))
 
     if search : #or st.session_state.selected_cap_group:
         filtered = df[
@@ -245,6 +247,9 @@ elif st.session_state.page == "Search":
             df["competency"].str.contains(search, case=False, na=False) |
             df["key_words"].str.contains(search, case=False, na=False)
         ]
+
+        if selected_domain != "All":
+            filtered = filtered[filtered["domain"] == selected_domain]
 
         #if st.session_state.selected_cap_group:
          #   filtered = filtered[
