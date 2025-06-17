@@ -258,7 +258,7 @@ elif st.session_state.page == "Search":
                     st.markdown(f"### 🧠 {row['skill']}")
                     st.markdown(f"- **Competency:** {row['competency']}")
                     st.markdown(f"- **Description:** {row['description'] or '*No description available*'}")
-                    col3, col4 = st.columns(2)
+                    col3, col4 = st.columns([1, 3])
                     with col3:
                         st.markdown(f"- **Capability Group:**")
                         st.markdown(f"- **Group Capability:**")
