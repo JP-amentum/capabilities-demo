@@ -253,38 +253,37 @@ elif st.session_state.page == "Search":
         filtered = filtered[filtered["domain"].isin(selected_domains)]
     
         
-        st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
+    st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
 
         
-        if filtered.empty:
-            st.warning("No results found.")
-        else:
-            grouped = filtered.groupby("domain")
-            for domain, group in grouped:
-                st.markdown(f"## 🏷️ {domain}")
-                for _, row in group.iterrows():
-                    st.markdown(f"### 🧠 {row['skill']}")
-                    st.markdown(f"- **Competency:** {row['competency']}")
-                    st.markdown(f"- **Description:** {row['description'] or '*No description available*'}")
-                    col3, col4 = st.columns([1, 3])
-                    with col3:
-                        st.markdown(f"- **Capability Group:**")
-                    with col4:
-                        st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}")
-                            #st.session_state.selected_cap_group = row['cap_group']
-                    col3, col4 = st.columns([1, 3])
-                    with col3:
-                        st.markdown(f"- **Group Capability:**")
-                    with col4:
-                        st.button(f"`{row['group_capability']}`", key=f"group_capability_btn_{_}")
-                    st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
-                    st.markdown("- **👥 Divisional Contacts:**")
-                    st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
-                    st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
-                    st.markdown(f"  - D&AS: `{row['sme_das'] or 'TBC'}`")
-                    st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
-                    st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
-                    st.markdown("---")
+    if filtered.empty:
+        st.warning("No results found.")
+    else:
+        grouped = filtered.groupby("domain")
+        for domain, group in grouped:
+            st.markdown(f"## 🏷️ {domain}")
+            for _, row in group.iterrows():
+                st.markdown(f"### 🧠 {row['skill']}")
+                st.markdown(f"- **Competency:** {row['competency']}")
+                st.markdown(f"- **Description:** {row['description'] or '*No description available*'}")
+                col3, col4 = st.columns([1, 3])
+                with col3:
+                    st.markdown(f"- **Capability Group:**")
+                with col4:
+                    st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}")
+                col3, col4 = st.columns([1, 3])
+                with col3:
+                    st.markdown(f"- **Group Capability:**")
+                with col4:
+                    st.button(f"`{row['group_capability']}`", key=f"group_capability_btn_{_}")
+                st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
+                st.markdown("- **👥 Divisional Contacts:**")
+                st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
+                st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
+                st.markdown(f"  - D&AS: `{row['sme_das'] or 'TBC'}`")
+                st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
+                st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
+                st.markdown("---")
 
 # --- Explorer Page ---
 elif st.session_state.page == "Explorer":
