@@ -263,7 +263,10 @@ elif st.session_state.page == "Search":
                         st.markdown(f"- **Capability Group:**")
                     with col4:
                         if st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}"):
-                            search = row['cap_group']
+                            search = "cap_group"
+                            filtered = df[
+                                df["cap_group"].str.contains(search, case=False, na=False)
+                            ]
                     col3, col4 = st.columns([1, 3])
                     with col3:
                         st.markdown(f"- **Group Capability:**")
