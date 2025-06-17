@@ -240,7 +240,7 @@ elif st.session_state.page == "Search":
     search = st.text_input("Search for a skill or competency")
     selected_domains = st.multiselect("Filter by Discipline(s)", options=domains)
 
-    if search : #or selected_domains:
+    if search or selected_domains:
         filtered = df[
             df["skill"].str.contains(search, case=False, na=False) |
             df["competency"].str.contains(search, case=False, na=False) |
@@ -284,6 +284,8 @@ elif st.session_state.page == "Search":
                 st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
                 st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
                 st.markdown("---")
+    else:
+        st.info("Please enter a search term or select a filter to see results.")
 
 # --- Explorer Page ---
 elif st.session_state.page == "Explorer":
