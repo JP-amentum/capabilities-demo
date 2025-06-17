@@ -429,7 +429,8 @@ elif st.session_state.page == "Feedback":
             df = pd.read_sql_query("SELECT * FROM feedback", feedback_conn)
             csv = df.to_csv(index=False)
             st.download_button("Click to Download", csv, "feedback.csv", "text/csv")
-    else 
+    else :
+        pass
         
 
 
