@@ -239,7 +239,7 @@ elif st.session_state.page == "Search":
     df = load_data_from_db()
     search = st.text_input("Search for a skill or competency")
 
-    if search #or st.session_state.selected_cap_group:
+    if search : #or st.session_state.selected_cap_group:
         filtered = df[
             df["skill"].str.contains(search, case=False, na=False) |
             df["competency"].str.contains(search, case=False, na=False) |
