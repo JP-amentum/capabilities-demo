@@ -349,45 +349,46 @@ elif st.session_state.page == "US Reachback":
 
 # --- Dashboard Page ---
 elif st.session_state.page == "Dashboard":
-    st.title("📊 Capability Dashboard")
-    df = load_data_from_db()
-    if df.empty:
-        st.warning("The database is currently empty. Please upload data in the Admin panel.")
-        st.stop()
+    st.title("📊 Resources Dashboard")
+    data_set = "Capacity_data.xlsx"
+    if os.path.exists(data_set):
+        df = pd.read_excel(data_set, engine='openpyxl')
+        if all(col in df.columns for col in ['Division', 'Local Job Title', 'HoP Discipline', 'Job family', 'Sub Job Family', 'Speciality', 'Employee Working Location Name', 'Country', 'Location']):
+            st.write("### Capability Groups ")
 
-    df["has_sme"] = df["global_sme"].apply(lambda x: isinstance(x, str) and x.strip().lower() != "nan" and x.strip() != "")
+    #df["has_sme"] = df["global_sme"].apply(lambda x: isinstance(x, str) and x.strip().lower() != "nan" and x.strip() != "")
 
     st.subheader("SME Assignment Overview")
-    sme_summary = df["has_sme"].value_counts().rename({True: "Assigned", False: "Unassigned"}).reset_index()
-    sme_summary.columns = ["Status", "Count"]
+    #sme_summary = df["has_sme"].value_counts().rename({True: "Assigned", False: "Unassigned"}).reset_index()
+    #sme_summary.columns = ["Status", "Count"]
 
-    if not sme_summary.empty:
-        chart = alt.Chart(sme_summary).mark_bar().encode(x="Status", y="Count", color="Status")
-        st.altair_chart(chart, use_container_width=True)
+    #if not sme_summary.empty:
+     #   chart = alt.Chart(sme_summary).mark_bar().encode(x="Status", y="Count", color="Status")
+      #  st.altair_chart(chart, use_container_width=True)
 
     st.subheader("Skills per Discipline")
-    domain_counts = df["domain"].value_counts().reset_index()
-    domain_counts.columns = ["Domain", "Skill Count"]
-    if not domain_counts.empty:
-        st.bar_chart(domain_counts.set_index("Domain"))
+    #domain_counts = df["domain"].value_counts().reset_index()
+    #domain_counts.columns = ["Domain", "Skill Count"]
+    #if not domain_counts.empty:
+     #   st.bar_chart(domain_counts.set_index("Domain"))
 
     st.subheader("Top Capability Groups")
-    top_groups = df["cap_group"].value_counts().dropna().head(10).reset_index()
-    top_groups.columns = ["Capability Group", "Count"]
-    st.dataframe(top_groups)
+    #top_groups = df["cap_group"].value_counts().dropna().head(10).reset_index()
+    #top_groups.columns = ["Capability Group", "Count"]
+    #st.dataframe(top_groups)
 
-    st.subheader("Capabilities Missing SME")
-    required_cols = {"domain", "competency", "skill", "global_sme"}
-    if required_cols.issubset(df.columns):
-        st.dataframe(df[~df["has_sme"]][["domain", "competency", "skill", "global_sme"]])
-    else:
-        st.warning("Expected columns not found in the data.")
+    #st.subheader("Capabilities Missing SME")
+    #required_cols = {"domain", "competency", "skill", "global_sme"}
+    #if required_cols.issubset(df.columns):
+     #   st.dataframe(df[~df["has_sme"]][["domain", "competency", "skill", "global_sme"]])
+    #else:
+     #   st.warning("Expected columns not found in the data.")
 
-    st.download_button(
-        label="📥 Download All Capabilities (CSV)",
-        data=df.to_csv(index=False),
-        file_name="amentum_capabilities.csv"
-    )
+    #st.download_button(
+     #   label="📥 Download All Capabilities (CSV)",
+      #  data=df.to_csv(index=False),
+       # file_name="amentum_capabilities.csv"
+    #)
     
 # --- Feedback Page ---
 elif st.session_state.page == "Feedback":
