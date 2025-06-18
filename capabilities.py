@@ -422,7 +422,7 @@ elif st.session_state.page == "Feedback":
         st.markdown("<p style='font-size: 16px; font-weight: 600;'>Overall, how would you rate your experience using CapabilityConnect?</p>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns([1, 8, 1])
         with col1:
-            st.markdown(("<p style='font-size: 16px; font-weight: 600;'>Poor</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 16px; font-weight: 600;'>Poor</p>", unsafe_allow_html=True)
         with col2:
             pass
         with col3:
