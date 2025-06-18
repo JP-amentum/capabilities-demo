@@ -360,33 +360,46 @@ elif st.session_state.page == "Dashboard":
 
         # Bar Chart: Distribution by Division
         st.subheader("Distribution by Division")
-        st.bar_chart(df['Division'].value_counts())
+        division_counts = df['Division'].value_counts().reset_index()
+        division_counts.columns = ['Division', 'Count']
+        bar_chart_division = alt.Chart(division_counts).mark_bar().encode(
+            x='Count:Q',
+            y=alt.Y('Division:N', sort='-x')
+        )
+        st.altair_chart(bar_chart_division, use_container_width=True)
 
-        # Pie Chart: Distribution by Country
+
+        # Donut Chart: Distribution by Country
         st.subheader("Distribution by Country")
-        country_counts = df['Country'].value_counts()
-        fig1, ax1 = plt.subplots()
-        ax1.pie(country_counts, labels=country_counts.index, autopct='%1.1f%%', startangle=140)
-        ax1.axis('equal')
-        st.pyplot(fig1)
+        country_counts = df['Country'].value_counts().reset_index()
+        country_counts.columns = ['Country', 'Count']
+        pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
+            theta=alt.Theta(field="Count", type="quantitative"),
+            color=alt.Color(field="Country", type="nominal"),
+            tooltip=['Country', 'Count']
+        )
+        st.altair_chart(pie_chart, use_container_width=True)
+
 
         # Bar Chart: Top 10 Locations
         st.subheader("Top 10 Locations")
-        top_locations = df['City/Location'].value_counts().head(10)
-        fig2, ax2 = plt.subplots()
-        sns.barplot(x=top_locations.values, y=top_locations.index, ax=ax2)
-        ax2.set_xlabel("Count")
-        ax2.set_ylabel("City/Location")
-        st.pyplot(fig2)
+        top_locations = df['City/Location'].value_counts().head(10).reset_index()
+        top_locations.columns = ['City/Location', 'Count']
+        bar_chart_locations = alt.Chart(top_locations).mark_bar().encode(
+            x='Count:Q',
+            y=alt.Y('City/Location:N', sort='-x')
+        )
+        st.altair_chart(bar_chart_locations, use_container_width=True)
 
         # Bar Chart: Top 10 Job Families
         st.subheader("Top 10 Job Families")
-        top_jobs = df['Job family'].value_counts().head(10)
-        fig3, ax3 = plt.subplots()
-        sns.barplot(x=top_jobs.values, y=top_jobs.index, ax=ax3)
-        ax3.set_xlabel("Count")
-        ax3.set_ylabel("Job Family")
-        st.pyplot(fig3)
+        top_jobs = df['Job family'].value_counts().head(10).reset_index()
+        top_jobs.columns = ['Job family', 'Count']
+        bar_chart_jobs = alt.Chart(top_jobs).mark_bar().encode(
+            x='Count:Q',
+            y=alt.Y('Job family:N', sort='-x')
+        )
+        st.altair_chart(bar_chart_jobs, use_container_width=True)
 
     else:
         st.warning("The data file was not found.")
