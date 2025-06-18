@@ -339,7 +339,7 @@ elif st.session_state.page == "US Reachback":
             for grouping in sorted(groupings):
                 with st.expander(grouping):
                     grouping_df = df[df['Capability_Groups'] == grouping][['Capabilities', 'Contact', 'Email']].reset_index(drop=True)
-                    st.dataframe(grouping_df)
+                    st.dataframe(grouping_df, hide_index=True)
         else:
             st.error("The Excel file must contain the columns: Capability_Groups, Capabilities, Contact, and Email.")
 
