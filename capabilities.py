@@ -390,7 +390,7 @@ elif st.session_state.page == "Dashboard":
         st.plotly_chart(fig_country, use_container_width=True)
 
         if selected_points and len(selected_points) > 0:
-            selected_country = selected_points[0]['label']
+            selected_country = selected_points[0].get('name')
             st.subheader(f"Location Distribution in {selected_country}")
             filtered_df = df[df['Country'] == selected_country]
             location_counts = filtered_df['Location'].value_counts().reset_index()
