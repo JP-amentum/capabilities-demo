@@ -428,7 +428,7 @@ elif st.session_state.page == "Dashboard":
         #location_counts = df.groupby(['Country', 'Location']).size().reset_index(name='Count')
 
         #location_chart = alt.Chart(location_counts).transform_filter(
-            country_selection
+            #country_selection
         #).mark_arc(innerRadius=50).encode(
          #   theta=alt.Theta(field="Count", type="quantitative"),
           #  color=alt.Color(field="Location", type="nominal"),
