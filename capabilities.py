@@ -362,6 +362,35 @@ elif st.session_state.page == "Dashboard":
         st.subheader("Distribution by Division")
         st.bar_chart(df['Division'].value_counts())
 
+        # Pie Chart: Distribution by Country
+        st.subheader("Distribution by Country")
+        country_counts = df['Country'].value_counts()
+        fig1, ax1 = plt.subplots()
+        ax1.pie(country_counts, labels=country_counts.index, autopct='%1.1f%%', startangle=140)
+        ax1.axis('equal')
+        st.pyplot(fig1)
+
+        # Bar Chart: Top 10 Locations
+        st.subheader("Top 10 Locations")
+        top_locations = df['City/Location'].value_counts().head(10)
+        fig2, ax2 = plt.subplots()
+        sns.barplot(x=top_locations.values, y=top_locations.index, ax=ax2)
+        ax2.set_xlabel("Count")
+        ax2.set_ylabel("City/Location")
+        st.pyplot(fig2)
+
+        # Bar Chart: Top 10 Job Families
+        st.subheader("Top 10 Job Families")
+        top_jobs = df['Job family'].value_counts().head(10)
+        fig3, ax3 = plt.subplots()
+        sns.barplot(x=top_jobs.values, y=top_jobs.index, ax=ax3)
+        ax3.set_xlabel("Count")
+        ax3.set_ylabel("Job Family")
+        st.pyplot(fig3)
+
+    else:
+        st.warning("The data file was not found.")
+
     
 # --- Feedback Page ---
 elif st.session_state.page == "Feedback":
