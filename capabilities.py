@@ -5,7 +5,6 @@ import hashlib
 import altair as alt
 from datetime import datetime
 import os
-import seaborn as sns
 
 # --- Password Hashes ---
 VIEWER_PASSWORD = "a031faaa259fb838388c52358bd295b06cefaf784df98000e9cff353c27fda4f" # 'amentum2025'
