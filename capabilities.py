@@ -383,11 +383,11 @@ elif st.session_state.page == "Dashboard":
 
         # Bar Chart: Top 10 Locations
         st.subheader("Top 10 Locations")
-        top_locations = df['City/Location'].value_counts().head(10).reset_index()
-        top_locations.columns = ['City/Location', 'Count']
+        top_locations = df['Location'].value_counts().head(10).reset_index()
+        top_locations.columns = ['Location', 'Count']
         bar_chart_locations = alt.Chart(top_locations).mark_bar().encode(
             x='Count:Q',
-            y=alt.Y('City/Location:N', sort='-x')
+            y=alt.Y('Location:N', sort='-x')
         )
         st.altair_chart(bar_chart_locations, use_container_width=True)
 
