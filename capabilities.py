@@ -399,7 +399,7 @@ elif st.session_state.page == "Dashboard":
             fig_location = px.pie(
                 location_counts,
                 names = 'Location',
-                values-'Count',
+                values='Count',
                 hole=0.5,
                 title=f"Locations in {selected_country}"
             )
