@@ -5,6 +5,8 @@ import hashlib
 import altair as alt
 from datetime import datetime
 import os
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 
