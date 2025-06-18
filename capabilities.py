@@ -390,20 +390,24 @@ elif st.session_state.page == "Dashboard":
         st.plotly_chart(fig_country, use_container_width=True)
 
         if selected_points and len(selected_points) > 0:
-            selected_country = selected_points[0].get('name')
-            st.subheader(f"Location Distribution in {selected_country}")
-            filtered_df = df[df['Country'] == selected_country]
-            location_counts = filtered_df['Location'].value_counts().reset_index()
-            location_counts.columns = ['Location', 'Count']
+            selected_country = selected_points[0].get('name') or selected_points[0].get('label')
+            
+            if selected_country and selected_country in df['Country'].values:
+                st.subheader(f"Location Distribution in {selected_country}")
+                filtered_df = df[df['Country'] == selected_country]
+                location_counts = filtered_df['Location'].value_counts().reset_index()
+                location_counts.columns = ['Location', 'Count']
 
-            fig_location = px.pie(
-                location_counts,
-                names = 'Location',
-                values='Count',
-                hole=0.5,
-                title=f"Locations in {selected_country}"
-            )
-            st.plotly_chart(fig_location, use_container_width=True)
+                fig_location = px.pie(
+                    data_frame=location_counts,
+                    names = 'Location',
+                    values='Count',
+                    hole=0.5,
+                    title=f"Locations in {selected_country}"
+                )
+                st.plotly_chart(fig_location, use_container_width=True)
+            else:
+                st.info("Click on a country segment in the donut chart above to view location distribution.")
         else:
             st.info("Click on a country segment in the donut chart above to view location distribution.")
             
