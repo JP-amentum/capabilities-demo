@@ -378,68 +378,68 @@ elif st.session_state.page == "Dashboard":
         country_counts = df['Country'].value_counts().reset_index()
         country_counts.columns = ['Country', 'Count']
         
-        fig_country = px.pie(
-            country_counts,
-            names='Country',
-            values='Count',
-            hole=0.5,
-            title="Click a country to view location distribution"
-        )
+        #fig_country = px.pie(
+         #   country_counts,
+          #  names='Country',
+           # values='Count',
+            #hole=0.5,
+            #title="Click a country to view location distribution"
+        #)
 
-        selected_points = plotly_events(fig_country, click_event=True, select_event=False)
-        st.plotly_chart(fig_country, use_container_width=True)
+        #selected_points = plotly_events(fig_country, click_event=True, select_event=False)
+        #st.plotly_chart(fig_country, use_container_width=True)
 
-        if selected_points and len(selected_points) > 0:
-            selected_country = selected_points[0].get('name') or selected_points[0].get('label')
+        #if selected_points and len(selected_points) > 0:
+         #   selected_country = selected_points[0].get('name') or selected_points[0].get('label')
             
-            if selected_country and selected_country in df['Country'].values:
-                st.subheader(f"Location Distribution in {selected_country}")
-                filtered_df = df[df['Country'] == selected_country]
-                location_counts = filtered_df['Location'].value_counts().reset_index()
-                location_counts.columns = ['Location', 'Count']
+          #  if selected_country and selected_country in df['Country'].values:
+           #     st.subheader(f"Location Distribution in {selected_country}")
+            #    filtered_df = df[df['Country'] == selected_country]
+             #   location_counts = filtered_df['Location'].value_counts().reset_index()
+              #  location_counts.columns = ['Location', 'Count']
 
-                fig_location = px.pie(
-                    data_frame=location_counts,
-                    names = 'Location',
-                    values='Count',
-                    hole=0.5,
-                    title=f"Locations in {selected_country}"
-                )
-                st.plotly_chart(fig_location, use_container_width=True)
-            else:
-                st.info("Click on a country segment in the donut chart above to view location distribution.")
-        else:
-            st.info("Click on a country segment in the donut chart above to view location distribution.")
+               # fig_location = px.pie(
+                #    data_frame=location_counts,
+                 #   names = 'Location',
+                  #  values='Count',
+                   # hole=0.5,
+                    #title=f"Locations in {selected_country}"
+                #)
+                #st.plotly_chart(fig_location, use_container_width=True)
+            #else:
+             #   st.info("Click on a country segment in the donut chart above to view location distribution.")
+        #else:
+         #   st.info("Click on a country segment in the donut chart above to view location distribution.")
             
 #If needed return to Altair based code
-        #country_selection = alt.selection_single(fields=['Country'], bind='legend')
+        country_selection = alt.selection_single(fields=['Country'], bind='legend')
         
-        #pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
-         #   theta=alt.Theta(field="Count", type="quantitative"),
-          #  color=alt.Color(field="Country", type="nominal"),
-           # tooltip=['Country', 'Count'],
-            #opacity=alt.condition(country_selection, alt.value(1), alt.value(0.3))
-        #).add_selection(
-         #   country_selection
-        #)
-        #st.altair_chart(pie_chart, use_container_width=True)
+        pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
+            theta=alt.Theta(field="Count", type="quantitative"),
+            color=alt.Color(field="Country", type="nominal"),
+            tooltip=['Country', 'Count'],
+            opacity=alt.condition(country_selection, alt.value(1), alt.value(0.3))
+        ).add_selection(
+            country_selection
+        )
+        st.altair_chart(pie_chart, use_container_width=True)
 
         
         # Filtered Donut Chart: Distribution by Location within selected Country
-        #st.subheader("Location Distribution in Selected Country")
+        st.subheader("Location Distribution in Selected Country")
 
         # Prepare data for second chart
-        #location_counts = df.groupby(['Country', 'Location']).size().reset_index(name='Count')
+        location_counts = df.groupby(['Country', 'Location']).size().reset_index(name='Count')
 
-        #location_chart = alt.Chart(location_counts).transform_filter(
-            #country_selection
-        #).mark_arc(innerRadius=50).encode(
-         #   theta=alt.Theta(field="Count", type="quantitative"),
-          #  color=alt.Color(field="Location", type="nominal"),
-           # tooltip=['Location', 'Count']
-        #)
+        location_chart = alt.Chart(location_counts).transform_filter(
+            country_selection
+        ).mark_arc(innerRadius=50).encode(
+            theta=alt.Theta(field="Count", type="quantitative"),
+            color=alt.Color(field="Location", type="nominal"),
+            tooltip=['Location', 'Count']
+        )
 
-        #st.altair_chart(location_chart, use_container_width=True)
+        st.altair_chart(location_chart, use_container_width=True)
 
 
         # Bar Chart: Top 10 Locations
