@@ -364,7 +364,7 @@ elif st.session_state.page == "Dashboard":
         division_counts.columns = ['Division', 'Count']
         bar_chart_division = alt.Chart(division_counts).mark_bar().encode(
             x='Count:Q',
-            y=alt.Y('Division:N', sort='-x')
+            y=alt.Y('Division:N', sort='-x')
         )
         st.altair_chart(bar_chart_division, use_container_width=True)
 
