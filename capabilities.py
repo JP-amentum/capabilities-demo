@@ -326,8 +326,7 @@ elif st.session_state.page == "US Reachback":
 
     default_path = "us_capability_groups.xlsx"
 
-    #st.write(f"Looking for file at: {default_path}")
-    #st.write(f"Current working directory: {os.getcwd()}")
+  
     
     if os.path.exists(default_path):
         df = pd.read_excel(default_path, engine='openpyxl')
@@ -339,7 +338,7 @@ elif st.session_state.page == "US Reachback":
 
             for grouping in sorted(groupings):
                 with st.expander(grouping):
-                    grouping_df = df[df['Capability_Groups'] == grouping][['Capabilities', 'Contact', 'Email']]
+                    grouping_df = df[df['Capability_Groups'] == grouping][['Capabilities', 'Contact', 'Email']].reset_index(drop=True)
                     st.dataframe(grouping_df)
         else:
             st.error("The Excel file must contain the columns: Capability_Groups, Capabilities, Contact, and Email.")
