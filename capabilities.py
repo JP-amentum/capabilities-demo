@@ -400,7 +400,7 @@ elif st.session_state.page == "Dashboard":
             tooltip=['Location', 'Count']
         )
 
-        st.altair_chart(location_chart, use_container_width=True
+        st.altair_chart(location_chart, use_container_width=True)
 
 
         # Bar Chart: Top 10 Locations
