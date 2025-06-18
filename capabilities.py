@@ -389,7 +389,7 @@ elif st.session_state.page == "Dashboard":
         selected_points = plotly_events(fig_country, click_event=True, select_event=False)
         st.plotly_chart(fig_country, use_container_width=True)
 
-        if selected_points:
+        if selected_points and len(selected_points) > 0:
             selected_country = selected_points[0]['label']
             st.subheader(f"Location Distribution in {selected_country}")
             filtered_df = df[df['Country'] == selected_country]
@@ -405,7 +405,7 @@ elif st.session_state.page == "Dashboard":
             )
             st.plotly_chart(fig_location, use_container_width=True)
         else:
-            st.warning("The data file 'capacity_data.xlsx' was not found.")
+            st.info("Click on a country segment in the donut chart above to view location distribution.")
             
 #If needed return to Altair based code
         #country_selection = alt.selection_single(fields=['Country'], bind='legend')
