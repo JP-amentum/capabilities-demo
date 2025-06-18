@@ -389,7 +389,7 @@ elif st.session_state.page == "Dashboard":
         st.pyplot(fig3)
 
     else:
-        st.warning("The data file was not found.")
+        st.warning("The data file was not found.")
 
     
 # --- Feedback Page ---
