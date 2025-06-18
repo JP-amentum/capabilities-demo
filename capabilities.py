@@ -419,14 +419,14 @@ elif st.session_state.page == "Feedback":
     with st.form("feedback_form"):
         name = st.text_input("Your Name")
         email = st.text_input("Your Email")
-        st.markdown("<p style='font-size: 14px; font-weight: 600;'>Overall, how would you rate your experience using CapabilityConnect?</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size: 14px; font-weight: 400;'>Overall, how would you rate your experience using CapabilityConnect?</p>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns([1, 8, 1])
         with col1:
-            st.markdown("<p style='font-size: 14px; font-weight: 600;'>Poor</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size: 14px; font-weight: 400;'>Poor</p>", unsafe_allow_html=True)
         with col2:
             pass
         with col3:
-            st.markdown("<p style='text-align: right; font-size: 14px; font-weight: 600;'>Great</p>", unsafe_allow_html=True)
+            st.markdown("<p style='text-align: right; font-size: 14px; font-weight: 400;'>Great</p>", unsafe_allow_html=True)
         rating = st.slider("", 1, 5, 3, label_visibility="collapsed")
         choice = st.selectbox("What kind of feedback do you wish to submit?", ["Report a fault or issue", "Make a suggestion"])
         question = st.text_input("What were you searching for? (If leaving a suggestion for the app, please ignore this question and the next)")
