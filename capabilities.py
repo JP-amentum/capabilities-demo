@@ -388,7 +388,7 @@ elif st.session_state.page == "Dashboard":
         ax3.set_ylabel("Job Family")
         st.pyplot(fig3)
 
-    else:
+    else:
         st.warning("The data file was not found.")
 
     
