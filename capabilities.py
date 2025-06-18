@@ -351,7 +351,7 @@ elif st.session_state.page == "US Reachback":
 elif st.session_state.page == "Dashboard":
     st.title("📊 Resources Dashboard")
     
-    data_set = "Capacity_data.xlsx"
+    data_set = "capacity_data.xlsx"
     if os.path.exists(data_set):
         df = pd.read_excel(data_set, engine='openpyxl')
 
