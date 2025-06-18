@@ -426,7 +426,7 @@ elif st.session_state.page == "Feedback":
         with col2:
             pass
         with col3:
-            st.markdown("<p style='text-align: right;'>Right-aligned text</p>", unsafe_allow_html=True)
+            st.markdown("<p style='text-align: right;'>Great</p>", unsafe_allow_html=True)
         rating = st.slider("", 1, 5, 3, label_visibility="collapsed")
         choice = st.selectbox("What kind of feedback do you wish to submit?", ["Report a fault or issue", "Make a suggestion"])
         question = st.text_input("What were you searching for? (If leaving a suggestion for the app, please ignore this question and the next)")
