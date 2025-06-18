@@ -419,7 +419,7 @@ elif st.session_state.page == "Feedback":
     with st.form("feedback_form"):
         name = st.text_input("Your Name")
         email = st.text_input("Your Email")
-        st.markdown("**Overall, how would you rate your experience using CapabilityConnect?**")
+        st.markdown("Overall, how would you rate your experience using CapabilityConnect?")
         col1, col2, col3 = st.columns([1, 8, 1])
         with col1:
             st.markdown("Poor")
