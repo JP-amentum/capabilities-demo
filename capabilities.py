@@ -424,9 +424,10 @@ elif st.session_state.page == "Feedback":
         with col1:
             st.markdown("Poor")
         with col2:
-            rating = st.slider("", 1, 5, 3, label_visibility="collapsed")
+            pass
         with col3:
             st.markdown("Great")
+        rating = st.slider("", 1, 5, 3, label_visibility="collapsed")
         choice = st.selectbox("What kind of feedback do you wish to submit?", ["Report a fault or issue", "Make a suggestion"])
         question = st.text_input("What were you searching for? (If leaving a suggestion for the app, please ignore this question and the next)")
         success = st.radio("Did you find what you were looking for?", ["Yes", "No"])
