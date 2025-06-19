@@ -3,7 +3,7 @@ import pandas as pd
 
 import plotly.express as px
 from streamlit_plotly_events import plotly_events
-from vega_datasets import data
+#from vega_datasets import data
 
 import sqlite3
 import hashlib
@@ -396,6 +396,11 @@ elif st.session_state.page == "Dashboard":
         country_counts['Country'] = country_counts['Country'].str.lower()
 
         countries = data.countries()
+        try:
+            from vega_datasets import data
+            st.success("vega_datasets is installed!")
+        except ImportError:
+            st.error("vega_datasets is NOT installed.")
         st.write(countries.columns.tolist())
         countries['Country'] = countries['name'].str.lower()
 
