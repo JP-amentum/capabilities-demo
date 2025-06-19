@@ -463,6 +463,10 @@ elif st.session_state.page == "Dashboard":
         bar_chart_jobs = alt.Chart(top_jobs).mark_bar().encode(
             x='Count:Q',
             y=alt.Y('Job family:N', sort='-x')
+        ).configure_axis(
+            labelFontSize=12,
+            titleFontSize=14,
+            labelLimit=170
         )
         st.altair_chart(bar_chart_jobs, use_container_width=True)
 
