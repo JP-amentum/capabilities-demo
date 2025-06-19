@@ -396,6 +396,7 @@ elif st.session_state.page == "Dashboard":
         country_counts['Country'] = country_counts['Country'].str.lower()
 
         countries = data.countries()
+        st.write(countries.columns.tolist())
         countries['Country'] = countries['name'].str.lower()
 
         merged = countries.merge(country_counts, on='Country', how='left')
