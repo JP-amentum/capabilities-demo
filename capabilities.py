@@ -392,14 +392,13 @@ elif st.session_state.page == "Dashboard":
         
         #extra code for map chart
         country_counts = df.groupby('Country').size().reset_index(name='count')
-        fig = px.scatter_geo(country_counts,
-                             locations="Country",
-                             locationmode="country names",
-                             size="count",
-                             projection="natural earth",
-                             title="Geographical Distribution of Data Points by Country")
+        fig = px.choropleth(country_counts,
+                            locations="Country",
+                            locationmode="country names",
+                            color="count",
+                            projection="natural earth",
+                            title="Geographical Distribution of Data Points by Country")
 
-        st.title("World Map Visualisation of Geographical Data")
         st.plotly_chart(fig)
         
         #country_counts = df['Country'].value_counts().reset_index()
