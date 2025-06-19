@@ -372,7 +372,7 @@ elif st.session_state.page == "Dashboard":
         ).configure_axis(
             labelFontSize=12,
             titleFontSize=14,
-            labelLimit=200
+            labelLimit=170
         )
         st.altair_chart(bar_chart_division, use_container_width=True)
 
