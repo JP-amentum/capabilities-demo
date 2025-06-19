@@ -369,6 +369,10 @@ elif st.session_state.page == "Dashboard":
         bar_chart_division = alt.Chart(division_counts).mark_bar().encode(
             x='Count:Q',
             y=alt.Y('Division:N', sort='-x')
+        ).configure_axis(
+            labelFontSize=12,
+            titleFontSize=14,
+            labelLimit=200
         )
         st.altair_chart(bar_chart_division, use_container_width=True)
 
