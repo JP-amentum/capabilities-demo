@@ -395,12 +395,13 @@ elif st.session_state.page == "Dashboard":
         #extra code for map chart
         country_counts['Country'] = country_counts['Country'].str.lower()
 
-        countries = data.countries()
+        
         try:
             from vega_datasets import data
             st.success("vega_datasets is installed!")
         except ImportError:
             st.error("vega_datasets is NOT installed.")
+        countries = data.countries()
         st.write(countries.columns.tolist())
         countries['Country'] = countries['name'].str.lower()
 
