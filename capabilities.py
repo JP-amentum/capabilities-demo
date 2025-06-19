@@ -391,7 +391,7 @@ elif st.session_state.page == "Dashboard":
         
         
         #extra code for map chart
-        country_counts = df.groupby('country').size().reset_index(name='count')
+        country_counts = df.groupby('Country').size().reset_index(name='count')
         fig = px.scatter_geo(country_counts,
                              locations="country",
                              locationmode="country names",
