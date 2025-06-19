@@ -3,6 +3,7 @@ import pandas as pd
 
 import plotly.express as px
 from streamlit_plotly_events import plotly_events
+from vega_datasets import data
 
 import sqlite3
 import hashlib
@@ -391,19 +392,38 @@ elif st.session_state.page == "Dashboard":
         st.subheader("Distribution by Country")
         country_counts = df['Country'].value_counts().reset_index()
         country_counts.columns = ['Country', 'Count']
-        
-        country_selection = alt.selection_single(fields=['Country'], bind='legend')
-        
-        pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
-            theta=alt.Theta(field="Count", type="quantitative"),
-            color=alt.Color(field="Country", type="nominal"),
-            tooltip=['Country', 'Count'],
-            opacity=alt.condition(country_selection, alt.value(1), alt.value(0.3))
-        ).add_selection(
-            country_selection
-        )
-        st.altair_chart(pie_chart, use_container_width=True)
+        #extra code for map chart
+        country_counts['Country'] = country_counts['Country'].str.lower()
 
+        countries = data.countries()
+        countries['Country'] = countries['name'].str.lower()
+
+        merged = countries.merge(country_counts, on='Country', how='left')
+        map_chart = alt.Chart(merged).mark_geoshape().encode(
+            color=alt.Color('Count:Q', scale=alt.Scale(scheme='blues')),
+            tooltip=['Country:N', 'Count:Q']
+        ).project(
+            type='equirectangular'
+        ).properties(
+            width=800,
+            height=400,
+            title='Distribution by Country'
+        )
+        st.altair_chart(map_chart, use_container_width=True)
+
+        #country_selection = alt.selection_single(fields=['Country'], bind='legend')
+        
+        #pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
+         #   theta=alt.Theta(field="Count", type="quantitative"),
+          #  color=alt.Color(field="Country", type="nominal"),
+           # tooltip=['Country', 'Count'],
+            #opacity=alt.condition(country_selection, alt.value(1), alt.value(0.3))
+        #).add_selection(
+         #   country_selection
+        #)
+        #st.altair_chart(pie_chart, use_container_width=True)
+
+        
         
         # Filtered Donut Chart: Distribution by Location within selected Country
         st.subheader("Location Distribution in Selected Country")
