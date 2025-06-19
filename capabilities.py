@@ -397,7 +397,7 @@ elif st.session_state.page == "Dashboard":
                             locations="Country",
                             locationmode="country names",
                             color="count",
-                            projection="robinson",
+                            projection="winkel tripel",
                             title="Distribution by Country",
                             color_continuous_scale=[[0, 'white'], [1, '#39B54A']],
                             range_color=(0,1))
