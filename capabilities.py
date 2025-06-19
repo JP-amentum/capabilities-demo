@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 
 import plotly.express as px
-from streamlit_plotly_events import plotly_events
-#from vega_datasets import data
 
 import sqlite3
 import hashlib
@@ -392,31 +390,18 @@ elif st.session_state.page == "Dashboard":
         st.subheader("Distribution by Country")
         country_counts = df['Country'].value_counts().reset_index()
         country_counts.columns = ['Country', 'Count']
-        #extra code for map chart
-        country_counts['Country'] = country_counts['Country'].str.lower()
-
         
-        try:
-            from vega_datasets import data
-            st.success("vega_datasets is installed!")
-        except ImportError:
-            st.error("vega_datasets is NOT installed.")
-        countries = data.countries()
-        st.write(countries.columns.tolist())
-        countries['Country'] = countries['country'].str.lower()
+        #extra code for map chart
+        fig = px.scatter_geo(country_counts,
+                             locations="country",
+                             locationmode="country names",
+                             size="count",
+                             projection="natural earth",
+                             title="Geographical Distribution of Data Points by Country")
 
-        merged = countries.merge(country_counts, on='Country', how='left')
-        map_chart = alt.Chart(merged).mark_geoshape().encode(
-            color=alt.Color('Count:Q', scale=alt.Scale(scheme='blues')),
-            tooltip=['Country:N', 'Count:Q']
-        ).project(
-            type='equirectangular'
-        ).properties(
-            width=800,
-            height=400,
-            title='Distribution by Country'
-        )
-        st.altair_chart(map_chart, use_container_width=True)
+        st.title("World Map Visualisation of Geographical Data")
+        st.plotly_chart(fig)
+        
 
         #country_selection = alt.selection_single(fields=['Country'], bind='legend')
         
