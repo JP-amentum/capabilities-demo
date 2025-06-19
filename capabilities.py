@@ -399,7 +399,7 @@ elif st.session_state.page == "Dashboard":
                             color="count",
                             projection="natural earth",
                             title="Distribution by Country",
-                            color_continuous_scale=[[0, 'white'], [1, 'blue']],
+                            color_continuous_scale=[[0, 'white'], [1, '#39B54A']],
                             range_color=(0,1))
 
         fig.update_layout(coloraxis_showscale=False)
