@@ -376,6 +376,16 @@ elif st.session_state.page == "Dashboard":
         )
         st.altair_chart(bar_chart_division, use_container_width=True)
 
+        
+        donut_chart = alt.Chart(division_counts).mark_arc(innerRadius=50).encode(
+            theta=alt.Theta(field="Count", type="quantitative"),
+            color=alt.Color(field="Division", type="nominal"),
+            tooltip=["Division", "Count"]
+        ).properties(
+            title="Distribution by Division"
+        )
+        st.altair_chart(donut_chart, use_container_width=True)
+        
 
         # Donut Chart: Distribution by Country
         st.subheader("Distribution by Country")
