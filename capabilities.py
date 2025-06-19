@@ -388,10 +388,10 @@ elif st.session_state.page == "Dashboard":
 
         # Donut Chart: Distribution by Country
         st.subheader("Distribution by Country")
-        country_counts = df['Country'].value_counts().reset_index()
-        country_counts.columns = ['Country', 'Count']
+        
         
         #extra code for map chart
+        country_counts = df.groupby('country').size().reset_index(name='count')
         fig = px.scatter_geo(country_counts,
                              locations="country",
                              locationmode="country names",
@@ -402,7 +402,8 @@ elif st.session_state.page == "Dashboard":
         st.title("World Map Visualisation of Geographical Data")
         st.plotly_chart(fig)
         
-
+        #country_counts = df['Country'].value_counts().reset_index()
+        #country_counts.columns = ['Country', 'Count']
         #country_selection = alt.selection_single(fields=['Country'], bind='legend')
         
         #pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
