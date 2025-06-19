@@ -403,7 +403,7 @@ elif st.session_state.page == "Dashboard":
             st.error("vega_datasets is NOT installed.")
         countries = data.countries()
         st.write(countries.columns.tolist())
-        countries['Country'] = countries['name'].str.lower()
+        countries['Country'] = countries['country'].str.lower()
 
         merged = countries.merge(country_counts, on='Country', how='left')
         map_chart = alt.Chart(merged).mark_geoshape().encode(
