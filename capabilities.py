@@ -433,20 +433,20 @@ elif st.session_state.page == "Dashboard":
         
         
         # Filtered Donut Chart: Distribution by Location within selected Country
-        st.subheader("Location Distribution in Selected Country")
+       # st.subheader("Location Distribution in Selected Country")
 
         # Prepare data for second chart
-        location_counts = df.groupby(['Country', 'Location']).size().reset_index(name='Count')
+        #location_counts = df.groupby(['Country', 'Location']).size().reset_index(name='Count')
 
-        location_chart = alt.Chart(location_counts).transform_filter(
-            country_selection
-        ).mark_arc(innerRadius=50).encode(
-            theta=alt.Theta(field="Count", type="quantitative"),
-            color=alt.Color(field="Location", type="nominal"),
-            tooltip=['Location', 'Count']
-        )
+       # location_chart = alt.Chart(location_counts).transform_filter(
+           # country_selection
+       # ).mark_arc(innerRadius=50).encode(
+            #theta=alt.Theta(field="Count", type="quantitative"),
+         #   color=alt.Color(field="Location", type="nominal"),
+          #  tooltip=['Location', 'Count']
+       # )
 
-        st.altair_chart(location_chart, use_container_width=True)
+       # st.altair_chart(location_chart, use_container_width=True)
 
 
         # Bar Chart: Top 10 Locations
