@@ -397,7 +397,8 @@ elif st.session_state.page == "Dashboard":
                             locationmode="country names",
                             color="count",
                             projection="natural earth",
-                            title="Geographical Distribution of Data Points by Country")
+                            title="Geographical Distribution of Data Points by Country",
+                            color_continuous_scale="Blues")
 
         st.plotly_chart(fig)
         
