@@ -392,13 +392,17 @@ elif st.session_state.page == "Dashboard":
         
         #extra code for map chart
         country_counts = df.groupby('Country').size().reset_index(name='count')
+        country_counts['color'] = 1
         fig = px.choropleth(country_counts,
                             locations="Country",
                             locationmode="country names",
                             color="count",
                             projection="natural earth",
-                            title="Geographical Distribution of Data Points by Country",
-                            color_continuous_scale="Blues")
+                            title="Distribution by Country",
+                            color_continuous_scale=[[0, 'white'], [1, 'blue']],
+                            range_color=(0,1))
+
+        fig.update_layout(coloraxis_showscale=False)
 
         st.plotly_chart(fig)
         
