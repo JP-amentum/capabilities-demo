@@ -405,39 +405,26 @@ elif st.session_state.page == "Dashboard":
         fig.update_layout(coloraxis_showscale=False)
 
         st.plotly_chart(fig)
-        
-        #country_counts = df['Country'].value_counts().reset_index()
-        #country_counts.columns = ['Country', 'Count']
-        #country_selection = alt.selection_single(fields=['Country'], bind='legend')
-        
-        #pie_chart = alt.Chart(country_counts).mark_arc(innerRadius=50).encode(
-         #   theta=alt.Theta(field="Count", type="quantitative"),
-          #  color=alt.Color(field="Country", type="nominal"),
-           # tooltip=['Country', 'Count'],
-            #opacity=alt.condition(country_selection, alt.value(1), alt.value(0.3))
-        #).add_selection(
-         #   country_selection
-        #)
-        #st.altair_chart(pie_chart, use_container_width=True)
+
+        selected_country = st.selectbox("Select a country to view city-level data", sorted(df['Country'].unique()))
+
+        filtered_data = df[df['Country'] == selected_country]
+
+        city_counts = filtered_data['Location'].value_counts().reset_index()
+        city_counts.columns = ['City', 'count']
+
+        fig_city =px.scatter_geo(city_counts,
+                                 locations="City",
+                                 locationmode="country names",
+                                 size="count",
+                                 projection="natural earth",
+                                 title=f"City-Level Distribution in {selected_country}")
 
         
+        st.subheader(f"City-Level Distribution in {selected_country}")
+        st.plotly_chart(fig_city)
         
-        # Filtered Donut Chart: Distribution by Location within selected Country
-       # st.subheader("Location Distribution in Selected Country")
-
-        # Prepare data for second chart
-        #location_counts = df.groupby(['Country', 'Location']).size().reset_index(name='Count')
-
-       # location_chart = alt.Chart(location_counts).transform_filter(
-           # country_selection
-       # ).mark_arc(innerRadius=50).encode(
-            #theta=alt.Theta(field="Count", type="quantitative"),
-         #   color=alt.Color(field="Location", type="nominal"),
-          #  tooltip=['Location', 'Count']
-       # )
-
-       # st.altair_chart(location_chart, use_container_width=True)
-
+       
 
         # Bar Chart: Top 10 Locations
         st.subheader("Top 10 Locations")
