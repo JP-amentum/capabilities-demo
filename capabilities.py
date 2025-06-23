@@ -407,8 +407,8 @@ elif st.session_state.page == "Dashboard":
         st.plotly_chart(fig)
 
         
-        df = pd.read_excel(data_set, engine='openpyxl')
-        selected_country = st.selectbox("Select a country to view city-level data", sorted(df['Country'].unique()))
+        newdf = pd.read_excel(data_set, engine='openpyxl')
+        selected_country = st.selectbox("Select a country to view city-level data", sorted(newdf['Country'].unique()))
 
         filtered_data = df[df['Country'] == selected_country]
 
