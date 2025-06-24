@@ -248,7 +248,8 @@ elif st.session_state.page == "Search":
             filtered = df[
                 df["skill"].str.contains(search, case=False, na=False) |
                 df["competency"].str.contains(search, case=False, na=False) |
-                df["key_words"].str.contains(search, case=False, na=False)
+                df["key_words"].str.contains(search, case=False, na=False) |
+                df["cap_group"].str.contains(search, case=False, na=False)
             ]
         else:
             filtered = df.copy()
