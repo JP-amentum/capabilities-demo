@@ -456,7 +456,7 @@ elif st.session_state.page == "Dashboard":
 
         fig_city.update_geos(
             center={"lat": center_lat, "lon": center_lon},
-            projection_scale=5,
+            projection_scale=7,
             showcountries=True,
             showland=True,
             landcolor="LightGreen"
