@@ -439,12 +439,18 @@ elif st.session_state.page == "Dashboard":
         center_lat = city_counts['Latitude'].mean()
         center_lon = city_counts['Longitude'].mean()
 
+        city_counts['log_count'] = np.log1p(city_counts['count'])  # log(1 + count)
+        min_size = 5
+        city_counts['scaled_size'] = city_counts['log_count'] + min_size
+
+        
+
         fig_city =px.scatter_geo(city_counts,
                                  lat='Latitude',
                                  lon='Longitude',
-                                 size='count',
+                                 size='scaled_size',
                                  hover_name="City",
-                                 projection="natural earth",
+                                 projection="robinson",
                                  title=f"City-Level Distribution in {selected_country}")
 
         fig_city.update_geos(
