@@ -77,7 +77,7 @@ if "trigger_rerun" not in st.session_state:
 
 if st.session_state.trigger_rerun:
     st.session_state.trigger_rerun = False
-    st.experimental_rerun()
+    st.rerun()
 
 def reset_page():
         st.session_state.page = "Search"
