@@ -433,7 +433,7 @@ elif st.session_state.page == "Dashboard":
 
         filtered_data = df[df['Country'] == selected_country]
 
-        city_counts = filtered_data.groupby(['Location', 'Latitude', Longitude']).size().reset_index(name='count')
+        city_counts = filtered_data.groupby(['Location', 'Latitude', 'Longitude']).size().reset_index(name='count')
         city_counts.columns = ['City', 'Latitude', 'Longitude', 'count']
 
         fig_city =px.scatter_geo(city_counts,
