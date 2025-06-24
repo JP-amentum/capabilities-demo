@@ -451,9 +451,8 @@ elif st.session_state.page == "Dashboard":
                                  size='scaled_size',
                                  hover_name="City",
                                  hover_data={'count': True, 'Latitude': False, 'Longitude': False, 'scaled_size': False},
-                                 projection="robinson"
-                                 #title=f"City-Level Distribution in {selected_country}"
-                                )
+                                 projection="robinson",
+                                 title=f"City-Level Distribution in {selected_country}")
 
         fig_city.update_geos(
             center={"lat": center_lat, "lon": center_lon},
@@ -463,7 +462,7 @@ elif st.session_state.page == "Dashboard":
             landcolor="LightGreen"
         )
         
-        st.subheader(f"City-Level Distribution in {selected_country}")
+       # st.subheader(f"City-Level Distribution in {selected_country}")
         st.plotly_chart(fig_city)
         
        
