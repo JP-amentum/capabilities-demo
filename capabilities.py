@@ -72,12 +72,15 @@ if "page" not in st.session_state:
 if "search_term" not in st.session_state:
     st.session_state.search_term = ""
 
+if "trigger_rerun" not in st.session_state:
+    st.session_state.trigger_rerun = False
+
 def reset_page():
         st.session_state.page = "Search"
 
 def set_search_term(value):
     st.session_state.search_term = value
-    st.experimental_rerun()
+    st.session_state.trigger_rerun = True
     
 # --- SQLite Setup ---
 DB_FILE = "capabilities.db"
@@ -246,6 +249,10 @@ elif st.session_state.page == "Home":
 
             
 # --- Search Page ---
+if st.session.trigger_rerun:
+    st.session_state.trigger_rerun = False
+    st.experimental_rerun()
+    
 elif st.session_state.page == "Search":
    
     st.title("🔍 Capability Search")
