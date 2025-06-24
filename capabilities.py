@@ -75,6 +75,10 @@ if "search_term" not in st.session_state:
 if "trigger_rerun" not in st.session_state:
     st.session_state.trigger_rerun = False
 
+if st.session_state.trigger_rerun:
+    st.session_state.trigger_rerun = False
+    st.experimental_rerun()
+
 def reset_page():
         st.session_state.page = "Search"
 
@@ -249,10 +253,7 @@ elif st.session_state.page == "Home":
 
             
 # --- Search Page ---
-if st.session_state.trigger_rerun:
-    st.session_state.trigger_rerun = False
-    st.experimental_rerun()
-    
+   
 elif st.session_state.page == "Search":
    
     st.title("🔍 Capability Search")
