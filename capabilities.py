@@ -8,6 +8,7 @@ import hashlib
 import altair as alt
 from datetime import datetime
 import os
+from functools import partial
 
 # --- Password Hashes ---
 VIEWER_PASSWORD = "a031faaa259fb838388c52358bd295b06cefaf784df98000e9cff353c27fda4f" # 'amentum2025'
@@ -287,7 +288,7 @@ elif st.session_state.page == "Search":
                         st.button(
                             f"`{row['cap_group']}`",
                             key=f"cap_group_btn_{_}",
-                            on_click=lambda val=row['cap_group']: set_search_term(val)
+                            on_click=partial(set_search_term, row['cap_group'])
                         )
                     col3, col4 = st.columns([1, 3])
                     with col3:
