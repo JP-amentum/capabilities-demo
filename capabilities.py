@@ -249,7 +249,7 @@ elif st.session_state.page == "Home":
 
             
 # --- Search Page ---
-if st.session.trigger_rerun:
+if st.session_state.trigger_rerun:
     st.session_state.trigger_rerun = False
     st.experimental_rerun()
     
