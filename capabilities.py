@@ -450,7 +450,9 @@ elif st.session_state.page == "Dashboard":
         fig_city.update_geos(
             center={"lat": center_lat, "lon": center_lon},
             projection_scale=5,
-            visible=False
+            showcountries=True,
+            showland=True,
+            landcolor="LightGreen"
         )
         
         st.subheader(f"City-Level Distribution in {selected_country}")
