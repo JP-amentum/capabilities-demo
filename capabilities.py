@@ -436,6 +436,9 @@ elif st.session_state.page == "Dashboard":
         city_counts = filtered_data.groupby(['Location', 'Latitude', 'Longitude']).size().reset_index(name='count')
         city_counts.columns = ['City', 'Latitude', 'Longitude', 'count']
 
+        center_lat = city_counts['Latitude'].mean()
+        center_lon = city_counts['Longitude'].mean()
+
         fig_city =px.scatter_geo(city_counts,
                                  lat='Latitude',
                                  lon='Longitude',
@@ -444,6 +447,11 @@ elif st.session_state.page == "Dashboard":
                                  projection="natural earth",
                                  title=f"City-Level Distribution in {selected_country}")
 
+        fig_city.update_geos(
+            center={"lat": center_lat, "lon": center_lon},
+            projection_scale=5,
+            visible=False
+        )
         
         st.subheader(f"City-Level Distribution in {selected_country}")
         st.plotly_chart(fig_city)
