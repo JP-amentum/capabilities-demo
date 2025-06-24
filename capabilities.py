@@ -67,6 +67,9 @@ if not st.session_state.role:
     
 if "page" not in st.session_state:
     st.session_state.page = "Home"
+
+if "search_term" not in st.session_state:
+    st.session_state.search_term = ""
     
 # --- SQLite Setup ---
 DB_FILE = "capabilities.db"
@@ -240,16 +243,18 @@ elif st.session_state.page == "Search":
     st.title("🔍 Capability Search")
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
-    search = st.text_input("Search for a skill or competency")
+    def reset_page():
+        st.session_state.page = "Search"
+    search = st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page)
     selected_domains = st.multiselect("Filter by Discipline(s)", options=domains)
 
     if search or selected_domains:
-        if search:
+        if st.session_state.search_term:
             filtered = df[
-                df["skill"].str.contains(search, case=False, na=False) |
-                df["competency"].str.contains(search, case=False, na=False) |
-                df["key_words"].str.contains(search, case=False, na=False) |
-                df["cap_group"].str.contains(search, case=False, na=False)
+                df["skill"].str.contains(st.session_state.search_term, case=False, na=False) |
+                df["competency"].str.contains(st.session_state.search_term, case=False, na=False) |
+                df["key_words"].str.contains(st.session_state.search_term, case=False, na=False) |
+                df["cap_group"].str.contains(st.session_state.search_term, case=False, na=False)
             ]
         else:
             filtered = df.copy()
@@ -275,7 +280,8 @@ elif st.session_state.page == "Search":
                         st.markdown(f"- **Capability Group:**")
                     with col4:
                         if st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}"):
-                            search = row['cap_group']
+                            st.session_state.search_term = row['cap_group']
+                            st.experimental_rerun()
                     col3, col4 = st.columns([1, 3])
                     with col3:
                         st.markdown(f"- **Group Capability:**")
