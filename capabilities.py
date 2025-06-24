@@ -70,6 +70,13 @@ if "page" not in st.session_state:
 
 if "search_term" not in st.session_state:
     st.session_state.search_term = ""
+
+def reset_page():
+        st.session_state.page = "Search"
+
+def set_search_term(value):
+    st.session_state.search_term = value
+    st.experimental_rerun()
     
 # --- SQLite Setup ---
 DB_FILE = "capabilities.db"
@@ -243,8 +250,6 @@ elif st.session_state.page == "Search":
     st.title("🔍 Capability Search")
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
-    def reset_page():
-        st.session_state.page = "Search"
     search = st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page)
     selected_domains = st.multiselect("Filter by Discipline(s)", options=domains)
 
@@ -279,9 +284,11 @@ elif st.session_state.page == "Search":
                     with col3:
                         st.markdown(f"- **Capability Group:**")
                     with col4:
-                        if st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}"):
-                            st.session_state.search_term = row['cap_group']
-                            st.experimental_rerun()
+                        st.button(
+                            f"`{row['cap_group']}`",
+                            key=f"cap_group_btn_{_}",
+                            on_click=lambda val=row['cap_group']: set_search_term(val)
+                        )
                     col3, col4 = st.columns([1, 3])
                     with col3:
                         st.markdown(f"- **Group Capability:**")
@@ -336,8 +343,6 @@ elif st.session_state.page == "US Reachback":
    # (keep option for later date) us_capabilities = st.file_uploader("Upload an Excel file", type=["xlsx", "xls"])
 
     default_path = "us_capability_groups.xlsx"
-
-  
     
     if os.path.exists(default_path):
         df = pd.read_excel(default_path, engine='openpyxl')
