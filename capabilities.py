@@ -274,7 +274,7 @@ elif st.session_state.page == "Search":
                     with col3:
                         st.markdown(f"- **Capability Group:**")
                     with col4:
-                        if st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}")
+                        if st.button(f"`{row['cap_group']}`", key=f"cap_group_btn_{_}"):
                             search = {row['cap_group']}
                     col3, col4 = st.columns([1, 3])
                     with col3:
