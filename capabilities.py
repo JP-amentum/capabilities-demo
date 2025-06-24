@@ -258,10 +258,10 @@ elif st.session_state.page == "Search":
     st.title("🔍 Capability Search")
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
-    search = st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page)
+    st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page)
     selected_domains = st.multiselect("Filter by Discipline(s)", options=domains)
 
-    if search or selected_domains:
+    if st.session_state.search_term or selected_domains:
         if st.session_state.search_term:
             filtered = df[
                 df["skill"].str.contains(st.session_state.search_term, case=False, na=False) |
