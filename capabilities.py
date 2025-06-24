@@ -450,6 +450,7 @@ elif st.session_state.page == "Dashboard":
                                  lon='Longitude',
                                  size='scaled_size',
                                  hover_name="City",
+                                 hover_data={'count': True, 'Latitude': False, 'Longitude': False, 'scaled_size': False},
                                  projection="robinson",
                                  title=f"City-Level Distribution in {selected_country}")
 
