@@ -440,7 +440,7 @@ elif st.session_state.page == "Dashboard":
         center_lon = city_counts['Longitude'].mean()
 
         city_counts['log_count'] = np.log1p(city_counts['count'])    # log(1 + count)
-        min_size = 5
+        min_size = 3
         city_counts['scaled_size'] = city_counts['log_count'] + min_size
 
         
