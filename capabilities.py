@@ -316,33 +316,35 @@ elif st.session_state.page == "Search":
 
 # --- Explorer Page ---
 elif st.session_state.page == "Explorer":
-    st.title("🗂️ Capability Explorer")
-    df = load_data_from_db()
-    df = df.dropna(how='all')
+    st.title("Capability Title: Lorem Ipsum ")
+    st.markdown("**Executive Summary**: 2-3 sentences max.")
     
-    if df.empty:
-        st.warning("No data found. Admins must upload a capability file.")
-        st.stop()
+    #df = load_data_from_db()
+    #df = df.dropna(how='all')
+    
+    #if df.empty:
+        #st.warning("No data found. Admins must upload a capability file.")
+        #st.stop()
 
-    domain = st.selectbox("Select a discipline", sorted(df["domain"].dropna().unique()))
-    filtered = df[df["domain"].str.strip().str.lower() == domain.strip().lower()]
+    #domain = st.selectbox("Select a discipline", sorted(df["domain"].dropna().unique()))
+    #filtered = df[df["domain"].str.strip().str.lower() == domain.strip().lower()]
 
-    st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
+    #st.markdown(f"**🔎 {len(filtered)} result(s) found.**") #Shows number of search results
 
-    for _, row in filtered.iterrows():
-        st.markdown(f"### 🧠 {row['skill']}")
-        st.markdown(f"- **Competency:** {row['competency']}")
-        st.markdown(f"- **Description:** {row['description'] or '*No description*'}")
-        st.markdown(f"- **Capability Group:** `{row['cap_group']}`")
-        st.markdown(f"- **Group Capability:** `{row['group_capability']}`")
-        st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
-        st.markdown("**👥 Divisional Contacts:**")
-        st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
-        st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
-        st.markdown(f"  - D&AS: `{row['sme_das'] or 'TBC'}`")
-        st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
-        st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
-        st.markdown("---")
+    #for _, row in filtered.iterrows():
+        #st.markdown(f"### 🧠 {row['skill']}")
+        #st.markdown(f"- **Competency:** {row['competency']}")
+        #st.markdown(f"- **Description:** {row['description'] or '*No description*'}")
+        #st.markdown(f"- **Capability Group:** `{row['cap_group']}`")
+        #st.markdown(f"- **Group Capability:** `{row['group_capability']}`")
+        #st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
+        #st.markdown("**👥 Divisional Contacts:**")
+        #st.markdown(f"  - Environment: `{row['sme_env'] or 'TBC'}`")
+        #st.markdown(f"  - Energy: `{row['sme_energy'] or 'TBC'}`")
+        #st.markdown(f"  - D&AS: `{row['sme_das'] or 'TBC'}`")
+        #st.markdown(f"  - TC&I: `{row['sme_tci'] or 'TBC'}`")
+        #st.markdown(f"  - APAC: `{row['sme_apac'] or 'TBC'}`")
+        #st.markdown("---")
 
 # --- US Reachback Page ---
 
