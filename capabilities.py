@@ -335,10 +335,14 @@ elif st.session_state.page == "Explorer":
     st.markdown("    - Others")
     st.markdown("**Additional Information:**")
     st.markdown(" ")
-    st.markdown("### Case Studies:**")
+    st.markdown("### Case Studies:")
     st.markdown("    - Example Projects")
     st.markdown("### Compliance to Codes and Standards")
     st.markdown("    - List of codes and standards")
+    st.markdown("### Points of Contact")
+    st.markdown("    - **Head of Profession**: Joe Bloggs")
+    st.markdown("    - **SME**: Jane Doe")
+    st.markdown("    - **Divisional Contact**: John Smith")
     
     
     
