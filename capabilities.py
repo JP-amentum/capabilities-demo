@@ -324,7 +324,7 @@ elif st.session_state.page == "Explorer":
     st.markdown("    - Skill 2")
     st.markdown("    - Skill 3")
     st.markdown(" ")
-    st.markdown("**Differentiators:**")
+    st.markdown("### Differentiators:**")
     st.markdown("**Proprietary Tools and Tech:**")
     st.markdown("    - Software 1")
     st.markdown("    - Tool 2")
