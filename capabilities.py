@@ -316,6 +316,7 @@ elif st.session_state.page == "Search":
 
 # --- Explorer Page ---
 elif st.session_state.page == "Explorer":
+    st.text_input("Search for a capability")
     st.title("Capability Title: Lorem Ipsum ")
     st.markdown("**Executive Summary**: 2-3 sentences max.")
     st.markdown(" ")
