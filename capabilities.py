@@ -319,7 +319,10 @@ elif st.session_state.page == "Explorer":
     st.title("Capability Title: Lorem Ipsum ")
     st.markdown("**Executive Summary**: 2-3 sentences max.")
     st.markdown(" ")
-    st.markdown("###Supporting Skills")
+    st.markdown(f"###Supporting Skills")
+    st.markdown("    - Skill 1")
+    st.markdown("    - Skill 2")
+    st.markdown("    - Skill 3")
     
     #df = load_data_from_db()
     #df = df.dropna(how='all')
