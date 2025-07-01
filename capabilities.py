@@ -291,7 +291,7 @@ elif st.session_state.page == "Search":
                     st.markdown(f"- **Description:** {row['description'] or '*No description available*'}")
                     col3, col4 = st.columns([1, 3])
                     with col3:
-                        st.markdown(f"- **Capability Group:**")
+                        st.markdown(f"- **Capability:**")
                     with col4:
                         st.button(
                             f"`{row['cap_group']}`",
@@ -300,7 +300,7 @@ elif st.session_state.page == "Search":
                         )
                     col3, col4 = st.columns([1, 3])
                     with col3:
-                        st.markdown(f"- **Group Capability:**")
+                        st.markdown(f"- **Capability Group:**")
                     with col4:
                         st.button(f"`{row['group_capability']}`", key=f"group_capability_btn_{_}")
                     st.markdown(f"- **👤 Head of Profession:** `{row['global_sme'] or 'TBC'}`")
