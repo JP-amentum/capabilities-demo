@@ -329,11 +329,27 @@ elif st.session_state.page == "Tool Inventory":
    
     st.title("🔧 Tool Inventory")
     st.text_input("Search for a tool or software package", key="search_term", on_change=reset_page)
-    with st.expander("Tool Name"):
-        st.markdown("Description of tool")
-        st.markdown("Origin (e.g. Proprietary Solution)")
-        st.markdown("Capability")
-        st.markdown("Tool Steward")
+    with st.expander("Tool 1"):
+        st.markdown("Description: Lorem ipsum dolor sit amet")
+        st.markdown("Origin: Proprietary Solution")
+        st.button("Capability 1")
+        st.markdown("Tool Steward: Jane Doe")
+        st.markdown("Type: Software Suite")
+
+    with st.expander("Tool 2"):
+        st.markdown("Description: Lorem ipsum dolor sit amet")
+        st.markdown("Origin: Off-the-shelf Product")
+        st.button("Capability 3")
+        st.markdown("Tool Steward: John Smith")
+        st.markdown("Type: On-premise")
+
+    with st.expander("Tool 3"):
+        st.markdown("Description: Lorem ipsum dolor sit amet")
+        st.markdown("Origin: Custom Made Third Party Solution")
+        st.button("Capability 7")
+        st.markdown("Tool Steward: Joe Bloggs")
+        st.markdown("Type: Desktop Application")
+    
 
 # --- Processes Page ---
    
@@ -625,6 +641,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
