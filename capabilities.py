@@ -328,6 +328,7 @@ elif st.session_state.page == "Skills Search":
 elif st.session_state.page == "Tool Inventory":
    
     st.title("🔧 Tool Inventory")
+    st.text_input("Search for a tool or software package", key="search_term", on_change=reset_page) 
 
 # --- Processes Page ---
    
@@ -619,6 +620,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
