@@ -128,8 +128,8 @@ st.sidebar.markdown("""
     <hr style="border:none; height: 3px; background-color: #39B54A; margin-top: -10px; margin-bottom: 20px;">
 """, unsafe_allow_html=True)
 
-pages_admin = ["Home", "Admin", "Capability Explorer", "Search", "Tools", "Processes", "Facilities", "US Reachback", "Dashboard", "Feedback"]
-pages_user = ["Home", "Capability Explorer", "Search", "Tools", "Processes", "Facilities", "US Reachback", "Feedback"]
+pages_admin = ["Home", "Admin", "Capability Explorer", "Skills Search", "Tools", "Processes", "Facilities", "US Reachback", "Dashboard", "Feedback"]
+pages_user = ["Home", "Capability Explorer", "Skills Search", "Tools", "Processes", "Facilities", "US Reachback", "Feedback"]
 pages = pages_admin if st.session_state.role == "admin" else pages_user
 
 for p in pages:
@@ -237,7 +237,7 @@ elif st.session_state.page == "Home":
 
     with col1:
         if st.button("🔍 Search", use_container_width=True):
-            navigate("Search")
+            navigate("Skills Search")
             
     with col2:
         if st.button("📚 Explorer", use_container_width=True):
@@ -254,7 +254,7 @@ elif st.session_state.page == "Home":
             
 # --- Search Page ---
    
-elif st.session_state.page == "Search":
+elif st.session_state.page == "Skills Search":
    
     st.title("🔍 Skills Search")
     df = load_data_from_db()
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
