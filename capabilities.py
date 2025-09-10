@@ -241,7 +241,7 @@ elif st.session_state.page == "Home":
             
     with col2:
         if st.button("📚 Explorer", use_container_width=True):
-            navigate("Explorer")
+            navigate("Capability Explorer")
 
     with col3:
         if st.button("💬 Feedback", use_container_width=True):
@@ -334,7 +334,7 @@ elif st.session_state.page == "Facilities":
 
 
 # --- Explorer Page ---
-elif st.session_state.page == "Explorer":
+elif st.session_state.page == "Capability Explorer":
     st.text_input("Search for a capability")
     st.title("Capability Title: Lorem Ipsum ")
     st.markdown("**Executive Summary**: 2-3 sentences max.")
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
