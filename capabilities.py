@@ -330,11 +330,19 @@ elif st.session_state.page == "Tool Inventory":
     st.title("🔧 Tool Inventory")
     st.text_input("Search for a tool or software package", key="search_term", on_change=reset_page)
     with st.expander("Tool 1"):
-        st.markdown("Description: Lorem ipsum dolor sit amet")
-        st.markdown("Origin: Proprietary Solution")
-        st.button("Capability 1")
-        st.markdown("Tool Steward: Jane Doe")
-        st.markdown("Type: Software Suite")
+        col3, col4 = st.columns([1, 3])
+        with col3:
+            st.markdown("Description:")
+            st.markdown("Origin:")
+            st.markdown("Tool Steward:")
+            st.markdown("Type:")
+            st.button("Capability 1")
+        with col4:
+            st.markdown("Lorem ipsum dolor sit amet")
+            st.markdown("Proprietary Solution")
+            st.markdown("Jane Doe")
+            st.markdown("Software Suite")
+            st.button("Capability 2")
 
     with st.expander("Tool 2"):
         st.markdown("Description: Lorem ipsum dolor sit amet")
@@ -641,6 +649,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
