@@ -128,8 +128,8 @@ st.sidebar.markdown("""
     <hr style="border:none; height: 3px; background-color: #39B54A; margin-top: -10px; margin-bottom: 20px;">
 """, unsafe_allow_html=True)
 
-pages_admin = ["Home", "Admin", "Search", "Tools", "Processes", "Facilities", "Explorer", "US Reachback", "Dashboard", "Feedback"]
-pages_user = ["Home", "Search", "Tools", "Processes", "Facilities", "Explorer", "US Reachback", "Feedback"]
+pages_admin = ["Home", "Admin", "Explorer", "Search", "Tools", "Processes", "Facilities", "US Reachback", "Dashboard", "Feedback"]
+pages_user = ["Home", "Explorer", "Search", "Tools", "Processes", "Facilities", "US Reachback", "Feedback"]
 pages = pages_admin if st.session_state.role == "admin" else pages_user
 
 for p in pages:
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
