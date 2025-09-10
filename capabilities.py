@@ -80,7 +80,7 @@ if st.session_state.trigger_rerun:
     st.rerun()
 
 def reset_page():
-        st.session_state.page = "Search"
+        st.session_state.page = "Skills Search"
 
 def set_search_term(value):
     st.session_state.search_term = value
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
