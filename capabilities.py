@@ -128,8 +128,8 @@ st.sidebar.markdown("""
     <hr style="border:none; height: 3px; background-color: #39B54A; margin-top: -10px; margin-bottom: 20px;">
 """, unsafe_allow_html=True)
 
-pages_admin = ["Home", "Admin", "Capability Explorer", "Skills Search", "Tools", "Processes", "Physical Assets", "US Reachback", "Dashboard", "Feedback"]
-pages_user = ["Home", "Capability Explorer", "Skills Search", "Tools", "Processes", "Physical Assets", "US Reachback", "Feedback"]
+pages_admin = ["Home", "Admin", "Capability Explorer", "Skills Search", "Tool Inventory", "Processes", "Physical Assets", "US Reachback", "Dashboard", "Feedback"]
+pages_user = ["Home", "Capability Explorer", "Skills Search", "Tool Inventory", "Processes", "Physical Assets", "US Reachback", "Feedback"]
 pages = pages_admin if st.session_state.role == "admin" else pages_user
 
 for p in pages:
@@ -316,9 +316,9 @@ elif st.session_state.page == "Skills Search":
 
 # --- Tools Page ---
    
-elif st.session_state.page == "Tools":
+elif st.session_state.page == "Tool Inventory":
    
-    st.title("🔧 Tools")
+    st.title("🔧 Tool Inventory")
 
 # --- Processes Page ---
    
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
