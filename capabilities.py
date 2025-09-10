@@ -238,6 +238,8 @@ elif st.session_state.page == "Home":
     with col1:
         if st.button("🔍 Skills Search", use_container_width=True):
             navigate("Skills Search")
+        if st.button("🔧 Tool Inventory", use_container_width=True):
+            navigate("Tools Inventory")
             
     with col2:
         if st.button("📚 Capability Explorer", use_container_width=True):
@@ -609,6 +611,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
