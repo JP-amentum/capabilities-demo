@@ -256,7 +256,7 @@ elif st.session_state.page == "Home":
    
 elif st.session_state.page == "Search":
    
-    st.title("🔍 Capability Search")
+    st.title("🔍 Skills Search")
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
     st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page)
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
