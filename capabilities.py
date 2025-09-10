@@ -236,11 +236,11 @@ elif st.session_state.page == "Home":
     col1, col2, col3 = st.columns([3, 3, 3])
 
     with col1:
-        if st.button("🔍 Search", use_container_width=True):
+        if st.button("🔍 Skills Search", use_container_width=True):
             navigate("Skills Search")
             
     with col2:
-        if st.button("📚 Explorer", use_container_width=True):
+        if st.button("📚 Capability Explorer", use_container_width=True):
             navigate("Capability Explorer")
 
     with col3:
@@ -609,6 +609,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
