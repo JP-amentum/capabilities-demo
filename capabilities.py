@@ -329,7 +329,7 @@ elif st.session_state.page == "Tool Inventory":
    
     st.title("🔧 Tool Inventory")
     st.text_input("Search for a tool or software package", key="search_term", on_change=reset_page)
-    st.expander("Tool Name")
+    with st.expander("Tool Name"):
         st.markdown("Description of tool")
         st.markdown("Origin (e.g. Proprietary Solution)")
         st.markdown("Capability")
@@ -625,6 +625,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
