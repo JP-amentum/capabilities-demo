@@ -336,12 +336,14 @@ elif st.session_state.page == "Tool Inventory":
             st.markdown("Origin:")
             st.markdown("Tool Steward:")
             st.markdown("Type:")
-            st.button("Capability 1")
+            st.markdown("Capabilities:")
+            
         with col4:
             st.markdown("Lorem ipsum dolor sit amet")
             st.markdown("Proprietary Solution")
             st.markdown("Jane Doe")
             st.markdown("Software Suite")
+            st.button("Capability 1")
             st.button("Capability 2")
 
     with st.expander("Tool 2"):
@@ -649,6 +651,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
