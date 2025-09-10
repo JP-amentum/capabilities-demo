@@ -236,16 +236,23 @@ elif st.session_state.page == "Home":
     col1, col2, col3 = st.columns([3, 3, 3])
 
     with col1:
-        if st.button("🔍 Skills Search", use_container_width=True):
-            navigate("Skills Search")
-        if st.button("🔧 Tool Inventory", use_container_width=True):
-            navigate("Tools Inventory")
-            
-    with col2:
         if st.button("📚 Capability Explorer", use_container_width=True):
             navigate("Capability Explorer")
+        
+        if st.button("⚙️ Processes", use_container_width=True):
+            navigate("Processes")
+            
+    with col2:
+        if st.button("🔍 Skills Search", use_container_width=True):
+            navigate("Skills Search")
+            
+        if st.button("🔬 Physical Assets", use_container_width=True):
+            navigate("Physical Assets")
 
     with col3:
+        if st.button("🔧 Tool Inventory", use_container_width=True):
+            navigate("Tools Inventory")
+        
         if st.button("💬 Feedback", use_container_width=True):
             navigate("Feedback")
 
@@ -611,6 +618,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
