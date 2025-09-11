@@ -398,10 +398,7 @@ elif st.session_state.page == "Physical Assets":
 
     facilities = [{"name": "Office 1", "location": "London", "type": "Office"}, {"name": "Laboratory 1", "location": "Manchester", "type": "Laboratory"},]
 
-mobile_assets = [
-    {"name": "Van 001", "location": "Birchwood", "type": "Vehicle"},
-    {"name": "Robot 001", "location": "Birchwood", "type": "Specialised Equipment"},
-]
+    mobile_assets = [{"name": "Van 001", "location": "Birchwood", "type": "Vehicle"}, {"name": "Robot 001", "location": "Birchwood", "type": "Specialised Equipment"}]
 
     #Toggle between Facilities and Mobile Assets
     asset_type = st.radio("Select Asset Type", ["Facilities", "Mobile Assets"])
@@ -698,6 +695,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
