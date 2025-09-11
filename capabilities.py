@@ -79,8 +79,11 @@ if st.session_state.trigger_rerun:
     st.session_state.trigger_rerun = False
     st.rerun()
 
-def reset_page():
+def reset_page_skills():
         st.session_state.page = "Skills Search"
+
+def reset_page_tools():
+        st.session_state.page = "Tool Inventory"
 
 def set_search_term(value):
     st.session_state.search_term = value
@@ -268,7 +271,7 @@ elif st.session_state.page == "Skills Search":
     st.title("🔍 Skills Search")
     df = load_data_from_db()
     domains = df["domain"].dropna().unique()
-    st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page)
+    st.text_input("Search for a skill or competency", key="search_term", on_change=reset_page_skills)
     selected_domains = st.multiselect("Filter by Discipline(s)", options=domains)
 
     if st.session_state.search_term or selected_domains:
@@ -328,7 +331,7 @@ elif st.session_state.page == "Skills Search":
 elif st.session_state.page == "Tool Inventory":
    
     st.title("🔧 Tool Inventory")
-    st.text_input("Search for a tool or software package", key="search_term", on_change=reset_page)
+    st.text_input("Search for a tool or software package", key="search_term", on_change=reset_page_tools)
     with st.expander("Tool 1"):
         col3, col4 = st.columns([1, 3])
         with col3:
@@ -651,6 +654,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
