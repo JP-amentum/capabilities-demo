@@ -396,6 +396,31 @@ elif st.session_state.page == "Physical Assets":
    
     st.title("🔬 Physical Assets")
 
+    facilities = [{"name": "Office 1", "location": "London", "type": "Office"}, {"name": "Laboratory 1", "location": "Manchester", "type": "Laboratory"},]
+
+mobile_assets = [
+    {"name": "Van 001", "location": "Birchwood", "type": "Vehicle"},
+    {"name": "Robot 001", "location": "Birchwood", "type": "Specialised Equipment"},
+]
+
+    #Toggle between Facilities and Mobile Assets
+    asset_type = st.radio("Select Asset Type", ["Facilities", "Mobile Assets"])
+
+    #Search box
+    search_query = st.text_input("Search Assets")
+
+    # Filter data based on selection and search
+    if asset_type == "Facilities":
+        filtered_assets = [a for a in facilities if search_query.lower() in a["name"].lower()]
+    else:
+        filtered_assets = [a for a in mobile_assets if search_query.lower() in a["name"].lower()]
+
+    # Display results
+    st.subheader(f"{asset_type} List")
+    for asset in filtered_assets:
+        st.markdown(f"**Name:** {asset['name']}  \n**Location:** {asset['location']}  \n**Type:** {asset['type']}")
+        st.markdown("---")
+
 
 # --- Explorer Page ---
 elif st.session_state.page == "Capability Explorer":
@@ -673,6 +698,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
