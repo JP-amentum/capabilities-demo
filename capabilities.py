@@ -411,9 +411,17 @@ elif st.session_state.page == "Physical Assets":
 
     # Filter data based on selection and search
     if asset_type == "Facilities":
-        filtered_assets = [a for a in facilities if search_query.lower() in a["name", "location", "type", "purpose", "manager", "capability"].lower()]
+        filtered_assets = [
+            a for a in facilities
+            if any(search_query.lower() in str(a[field]).lower()
+                   for field in ["name", "location", "type", "purpose", "manager", "capability"])
+        ]
     else:
-        filtered_assets = [a for a in mobile_assets if search_query.lower() in a["name"].lower()]
+        filtered_assets = [
+            a for a in mobile_assets
+            if any(search_query.lower() in str(a[field]).lower()
+                   for field in ["name", "location", "type", "purpose", "manager", "capability"])
+        ]
 
     # Display results
     st.subheader(f"{asset_type} List")
@@ -699,6 +707,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
