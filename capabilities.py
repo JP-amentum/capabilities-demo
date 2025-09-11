@@ -411,7 +411,7 @@ elif st.session_state.page == "Physical Assets":
 
     # Filter data based on selection and search
     if asset_type == "Facilities":
-        filtered_assets = [a for a in facilities if search_query.lower() in a["name"].lower()]
+        filtered_assets = [a for a in facilities if search_query.lower() in a.lower()]
     else:
         filtered_assets = [a for a in mobile_assets if search_query.lower() in a["name"].lower()]
 
@@ -699,6 +699,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
