@@ -437,6 +437,9 @@ elif st.session_state.page == "Capability Explorer":
     st.title("Capability Title: Lorem Ipsum ")
     st.markdown("**Executive Summary**: 2-3 sentences max.")
     st.markdown(" ")
+    st.markdown("## Offerings supported:")
+    st.markdown("    - Offering 1")
+    st.markdown("    - Offering 2")
     st.markdown("### Supporting Skills")
     st.markdown("    - Skill 1")
     st.markdown("    - Skill 2")
@@ -707,6 +710,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
