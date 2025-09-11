@@ -350,11 +350,22 @@ elif st.session_state.page == "Tool Inventory":
             st.button("Capability 2")
 
     with st.expander("Tool 2"):
-        st.markdown("Description: Lorem ipsum dolor sit amet")
-        st.markdown("Origin: Off-the-shelf Product")
-        st.button("Capability 3")
-        st.markdown("Tool Steward: John Smith")
-        st.markdown("Type: On-premise")
+        col3, col4 = st.columns([1, 3])
+        with col3:
+            st.markdown("Description:")
+            st.markdown("Origin:")
+            st.markdown("Tool Steward:")
+            st.markdown("Type:")
+            st.markdown("Capabilities:")
+            
+        with col4:
+            st.markdown("Lorem ipsum dolor sit amet")
+            st.markdown("Off-the-shelf Product")
+            st.markdown("John Smith")
+            st.markdown("On-premise")
+            st.button("Capability 3")
+            st.button("Capability 4")
+            st.button("Capability 5")
 
     with st.expander("Tool 3"):
         st.markdown("Description: Lorem ipsum dolor sit amet")
@@ -654,6 +665,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
