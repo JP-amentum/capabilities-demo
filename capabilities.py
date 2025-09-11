@@ -396,9 +396,11 @@ elif st.session_state.page == "Physical Assets":
    
     st.title("🔬 Physical Assets")
 
-    facilities = [{"name": "Office 1", "location": "London", "type": "Office"}, {"name": "Laboratory 1", "location": "Manchester", "type": "Laboratory"},]
+    facilities = [{"name": "Office 1", "location": "London", "type": "Office", "purpose": "Collaborative Workspace", "manager": "Joe Bloggs", "capability": "Capability 1"}, 
+                  {"name": "Laboratory 1", "location": "Manchester", "type": "Laboratory", "purpose": "Stress testing laboratory", "manager": "Jane Doe", "capability": "Capability 2"}]
 
-    mobile_assets = [{"name": "Van 001", "location": "Birchwood", "type": "Vehicle"}, {"name": "Robot 001", "location": "Birchwood", "type": "Specialised Equipment"}]
+    mobile_assets = [{"name": "Van 001", "location": "Birchwood", "type": "Vehicle", "purpose": "Transport of goods", "manager": "John Smith", "capability": "Capability 3"},
+                     {"name": "Robot 001", "location": "Birchwood", "type": "Specialised Equipment", "purpose": "Remote access to hazardous areas", "manager": "Jane Doe", "capability": "Capability 4"}]
 
     #Toggle between Facilities and Mobile Assets
     asset_type = st.radio("Select Asset Type", ["Facilities", "Mobile Assets"])
@@ -415,7 +417,8 @@ elif st.session_state.page == "Physical Assets":
     # Display results
     st.subheader(f"{asset_type} List")
     for asset in filtered_assets:
-        st.markdown(f"**Name:** {asset['name']}  \n**Location:** {asset['location']}  \n**Type:** {asset['type']}")
+        st.markdown(f"**Name:** {asset['name']}  \n**Location:** {asset['location']}  \n**Type:** {asset['type']} \n**Purpose:** {asset['purpose']} \n**Purpose:** {asset['purpose']} \n**Manager:** {asset['manager']}")
+        st.button(f"{asset['capability']}")
         st.markdown("---")
 
 
@@ -695,6 +698,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
