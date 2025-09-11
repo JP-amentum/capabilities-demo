@@ -417,7 +417,7 @@ elif st.session_state.page == "Physical Assets":
     # Display results
     st.subheader(f"{asset_type} List")
     for asset in filtered_assets:
-        st.markdown(f"**Name:** {asset['name']}  \n**Location:** {asset['location']}  \n**Type:** {asset['type']} \n**Purpose:** {asset['purpose']} \n**Purpose:** {asset['purpose']} \n**Manager:** {asset['manager']}")
+        st.markdown(f"**Name:** {asset['name']}  \n**Location:** {asset['location']}  \n**Type:** {asset['type']}  \n**Purpose:** {asset['purpose']}  \n**Manager:** {asset['manager']}")
         st.button(f"{asset['capability']}")
         st.markdown("---")
 
@@ -698,6 +698,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
