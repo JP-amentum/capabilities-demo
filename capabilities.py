@@ -368,12 +368,20 @@ elif st.session_state.page == "Tool Inventory":
             st.button("Capability 5")
 
     with st.expander("Tool 3"):
-        st.markdown("Description: Lorem ipsum dolor sit amet")
-        st.markdown("Origin: Custom Made Third Party Solution")
-        st.button("Capability 7")
-        st.markdown("Tool Steward: Joe Bloggs")
-        st.markdown("Type: Desktop Application")
-    
+        col3, col4 = st.columns([1, 3])
+        with col3:
+            st.markdown("Description:")
+            st.markdown("Origin:")
+            st.markdown("Tool Steward:")
+            st.markdown("Type:")
+            st.markdown("Capabilities:")
+            
+        with col4:
+            st.markdown("Lorem ipsum dolor sit amet")
+            st.markdown("Custom Made Third Party Solution")
+            st.markdown("Joe Bloggs")
+            st.markdown("Desktop Application")
+            st.button("Capability 6")
 
 # --- Processes Page ---
    
@@ -665,6 +673,7 @@ elif st.session_state.page == "Feedback":
     else :
         pass
         
+
 
 
 
